@@ -1,0 +1,339 @@
+Unity Editor version:    6000.0.4f1 (b5d5d06b038a)
+Branch:                  trunk
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 14.5 (Build 23F79)
+Darwin version:          23.5.0
+Architecture:            x86_64
+Running under Rosetta:   NO
+Available memory:        8192 MB
+Using pre-set license
+Pro License: YES
+
+COMMAND LINE ARGUMENTS:
+/Users/faluditomi/Documents/unity editors/6000.0.4f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/faluditomi/Documents/unity projects/first-words/first-words
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+58852
+-job-worker-count
+1
+-background-job-worker-count
+8
+-asset-garbage-collectors
+1
+Successfully changed project path to: /Users/faluditomi/Documents/unity projects/first-words/first-words
+/Users/faluditomi/Documents/unity projects/first-words/first-words
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [140704680726464]  Target information:
+
+Player connection [140704680726464]  * "[IP] 192.168.1.20 [Port] 0 [Flags] 2 [Guid] 2535952887 [EditorId] 2535952887 [Version] 1048832 [Id] OSXEditor(0,Faludis-Air.home) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
+
+Player connection [140704680726464] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [140704680726464] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 1
+Library Redirect Path: Library/
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+Refreshing native plugins compatible for Editor in 11.31 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.4f1 (b5d5d06b038a)
+[Subsystems] Discovering subsystems at path /Users/faluditomi/Documents/unity editors/6000.0.4f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/faluditomi/Documents/unity projects/first-words/first-words/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Color LCD preferred device: Intel(R) UHD Graphics 617 (low power)
+Metal devices available: 1
+0: Intel(R) UHD Graphics 617 (low power)
+Using device Intel(R) UHD Graphics 617 (low power)
+Initializing Metal device caps: Intel(R) UHD Graphics 617
+Initialize mono
+Mono path[0] = '/Users/faluditomi/Documents/unity editors/6000.0.4f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Users/faluditomi/Documents/unity editors/6000.0.4f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Users/faluditomi/Documents/unity editors/6000.0.4f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56576
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Users/faluditomi/Documents/unity editors/6000.0.4f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.005533 seconds.
+- Loaded All Assemblies, in  1.900 seconds
+Native extension for OSXStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.263 seconds
+Domain Reload Profiling: 5163ms
+	BeginReloadAssembly (798ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (5ms)
+	RebuildCommonClasses (164ms)
+	RebuildNativeTypeToScriptingClass (49ms)
+	initialDomainReloadingComplete (160ms)
+	LoadAllAssembliesAndSetupDomain (728ms)
+		LoadAssemblies (793ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (720ms)
+			TypeCache.Refresh (712ms)
+				TypeCache.ScanAssembly (642ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (2ms)
+	FinalizeReload (3264ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2904ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (235ms)
+			SetLoadedEditorAssemblies (34ms)
+			BeforeProcessingInitializeOnLoad (29ms)
+			ProcessInitializeOnLoadAttributes (776ms)
+			ProcessInitializeOnLoadMethodAttributes (1830ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  4.582 seconds
+'Packages/com.unity.render-pipelines.high-definition/Editor/Wizard/HDWizard.UIElement.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.high-definition/Editor/Wizard/HDWizard.Configuration.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.high-definition/Editor/Wizard/HDWizard.Window.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 5.19 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in 14.938 seconds
+Domain Reload Profiling: 19522ms
+	BeginReloadAssembly (2214ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (35ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (116ms)
+	RebuildCommonClasses (141ms)
+	RebuildNativeTypeToScriptingClass (38ms)
+	initialDomainReloadingComplete (117ms)
+	LoadAllAssembliesAndSetupDomain (2071ms)
+		LoadAssemblies (1335ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (1024ms)
+			TypeCache.Refresh (790ms)
+				TypeCache.ScanAssembly (745ms)
+			BuildScriptInfoCaches (185ms)
+			ResolveRequiredComponents (36ms)
+	FinalizeReload (14942ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (12854ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			SetLoadedEditorAssemblies (13ms)
+			BeforeProcessingInitializeOnLoad (157ms)
+			ProcessInitializeOnLoadAttributes (5640ms)
+			ProcessInitializeOnLoadMethodAttributes (7031ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (42ms)
+Launching external process: /Users/faluditomi/Documents/unity editors/6000.0.4f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.53 seconds
+Refreshing native plugins compatible for Editor in 9.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 454 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6646 unused Assets / (3.9 MB). Loaded Objects now: 7622.
+Memory consumption went from 227.5 MB to 223.6 MB.
+Total: 365.548124 ms (FindLiveObjects: 232.783656 ms CreateObjectMapping: 8.608114 ms MarkObjects: 97.919500 ms  DeleteObjects: 26.233209 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 48097.971783 seconds.
+  path: Assets/TutorialInfo/Scripts/Readme.cs
+  artifactKey: Guid(fcf7219bab7fe46a1ad266029b2fee19) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/TutorialInfo/Scripts/Readme.cs using Guid(fcf7219bab7fe46a1ad266029b2fee19) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'c57a0c209becdbce7d776692e03ca421') in 0.996445936 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.014714 seconds.
+  path: Assets/InputSystem_Actions.inputactions
+  artifactKey: Guid(35845fe01580c41289b024647b1d1c53) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/InputSystem_Actions.inputactions using Guid(35845fe01580c41289b024647b1d1c53) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'c52c89ec3cfcac7e63d2444355e04500') in 0.039985592 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000231 seconds.
+  path: Assets/Settings/SkyandFogSettingsProfile.asset
+  artifactKey: Guid(8ba92e2dd7f884a0f88b98fa2d235fe7) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Settings/SkyandFogSettingsProfile.asset using Guid(8ba92e2dd7f884a0f88b98fa2d235fe7) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '69322df7c2251280e254a31927609f70') in 0.083823433 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/OutdoorsScene.unity
+  artifactKey: Guid(8124e5870f4fd4c779e7a5f994e84ad1) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/OutdoorsScene.unity using Guid(8124e5870f4fd4c779e7a5f994e84ad1) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'd4f03eff7ade3a20ad6a97aa0ce91b74') in 0.039397605 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Assets/TutorialInfo/Layout.wlt
+  artifactKey: Guid(eabc9546105bf4accac1fd62a63e88e6) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/TutorialInfo/Layout.wlt using Guid(eabc9546105bf4accac1fd62a63e88e6) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '51e0ab347c361fca5487e7d896e16bf6') in 0.020910381 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.022515 seconds.
+  path: Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs
+  artifactKey: Guid(476cc7d7cd9874016adc216baab94a0a) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs using Guid(476cc7d7cd9874016adc216baab94a0a) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '501b9f1c9e13301e120b6dc3e3e926e8') in 0.033357424 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000323 seconds.
+  path: Assets/Settings/HDRPDefaultResources/HDRenderPipelineGlobalSettings.asset
+  artifactKey: Guid(ac0316ca287ba459492b669ff1317a6f) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Settings/HDRPDefaultResources/HDRenderPipelineGlobalSettings.asset using Guid(ac0316ca287ba459492b669ff1317a6f) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'b6477c90f3ddc78729d34b02bf9bdf79') in 1.292868678 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001294 seconds.
+  path: Assets/Settings/HDRP High Fidelity.asset
+  artifactKey: Guid(36dd385e759c96147b6463dcd1149c11) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Settings/HDRP High Fidelity.asset using Guid(36dd385e759c96147b6463dcd1149c11) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '0f7176683f1718e7eb627a885e13a05d') in 0.377276923 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000363 seconds.
+  path: Assets/Settings/HDRPDefaultResources/DefaultSettingsVolumeProfile.asset
+  artifactKey: Guid(14b392ee213d25a48b1feddbd9f5a9be) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Settings/HDRPDefaultResources/DefaultSettingsVolumeProfile.asset using Guid(14b392ee213d25a48b1feddbd9f5a9be) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'a02b3259d64491d6a9e4093e758b8efc') in 0.044518287 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/Settings/HDRPDefaultResources/DefaultLookDevProfile.asset
+  artifactKey: Guid(4594f4a3fb14247e192bcca6dc23c8ed) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Settings/HDRPDefaultResources/DefaultLookDevProfile.asset using Guid(4594f4a3fb14247e192bcca6dc23c8ed) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '23cac41293a7e50019cb11b4408bf015') in 0.029389352 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000146 seconds.
+  path: Assets/Settings/HDRP Performant.asset
+  artifactKey: Guid(168a2336534e4e043b2a210b6f8d379a) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Settings/HDRP Performant.asset using Guid(168a2336534e4e043b2a210b6f8d379a) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '420d5b08a672231b273f14d435e19d05') in 0.150697551 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001205 seconds.
+  path: Assets/Settings/HDRPDefaultResources/HDRenderPipelineAsset.asset
+  artifactKey: Guid(b9f3086da92434da0bc1518f19f0ce86) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Settings/HDRPDefaultResources/HDRenderPipelineAsset.asset using Guid(b9f3086da92434da0bc1518f19f0ce86) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '751a1ec2f60bc178efff67010d7706f8') in 0.135427135 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Assets/TutorialInfo/Icons/HDRP.png
+  artifactKey: Guid(d19680cd422524695938fbe55cc3b3bd) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/TutorialInfo/Icons/HDRP.png using Guid(d19680cd422524695938fbe55cc3b3bd) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '8822d29a3dce268e5d858f73cf37f861') in 0.216533767 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000746 seconds.
+  path: Assets/Settings/HDRP Balanced.asset
+  artifactKey: Guid(3e2e6bfc59709614ab90c0cd7d755e48) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Settings/HDRP Balanced.asset using Guid(3e2e6bfc59709614ab90c0cd7d755e48) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'f0e86c7bfe1a664572e3f82d65ca0cec') in 0.125391596 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000145 seconds.
+  path: Assets/TutorialInfo/Icons/Help_Icon.png
+  artifactKey: Guid(9266273b8f123004195741f969177dda) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/TutorialInfo/Icons/Help_Icon.png using Guid(9266273b8f123004195741f969177dda) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '5629b00d6e65aa421be63202bdbd62de') in 0.039941379 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001264 seconds.
+  path: Assets/Readme.asset
+  artifactKey: Guid(7f2c382dc2c22446db59030979f6e495) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Readme.asset using Guid(7f2c382dc2c22446db59030979f6e495) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'e99693d61c4b0090e894dabe41bc3f45') in 0.024529424 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 36.390958 seconds.
+  path: Assets/OutdoorsScene.unity
+  artifactKey: Guid(8124e5870f4fd4c779e7a5f994e84ad1) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/OutdoorsScene.unity using Guid(8124e5870f4fd4c779e7a5f994e84ad1) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '61fcabd9a0f797fa21dcec61da68a64e') in 0.021678649 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
