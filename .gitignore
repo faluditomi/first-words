@@ -36,11 +36,6 @@ ehthumbs.db
 # Linux specific files
 .directory
 
-# Whisper Live
-whisper-live/venv/
-whisper-live/__pycache__/
-whisper-live/*.log
-
 # Python environment
 *.pyc
 *.pyo
