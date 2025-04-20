@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using Whisper;
 using Whisper.Utils;
 
-//TODO: for now, this is a singleton, but that might have to change once the game becomes multiplayer
+//NOTE for now, this is a singleton, but that might have to change once the game becomes multiplayer
 public class WhisperTranscriptManager : MonoBehaviour
 {
 
@@ -53,25 +53,13 @@ public class WhisperTranscriptManager : MonoBehaviour
             UiUtils.ScrollDown(TranscriptionWindowScrollUI);
         }
     }
-
-    //TODO: instead of relying only on the segment updates, we could prep the spell (visuals, particals, etc.) when
+    
+    //NOTE instead of relying only on the segment updates, we could prep the spell (visuals, particals, etc.) when
     //it is recognised in the update, and cast it for real when it appears in the finished segment
     private void OnSegmentUpdated(WhisperResult segment)
     {
         Debug.Log($"Segment updated: {segment.Result}");
         SpellRecognitionManager.Instance.ScanSegment(segment.Result);
-        // currentSegment = segment.Result;
-
-        // foreach(String spell in activeSpells)
-        // {
-        //     currentSegment.RemoveConsecutiveCharacters()
-        // }
-
-        // if(/* there is a spell in currentSegment */)
-        // {
-        //     // activate spell
-        //     // add spell-word to activeSpells
-        // }
         
     }
 
@@ -79,7 +67,6 @@ public class WhisperTranscriptManager : MonoBehaviour
     {
         Debug.Log($"Segment finished: {segment.Result}");
         SpellRecognitionManager.Instance.ResetSegmentation();
-        // currentSegment = "";
     }
 
 }

@@ -29,16 +29,8 @@ public class SpellRecognitionManager : MonoBehaviour
         SessionSpellCache.UnloadAll();
     }
 
-    //TODO
-    //method that receives a string and looks for spell words in it, and if found any, triggers their Spell's event
-    // match text with activeSpells' strings and then find the corresponding spell using the below method
-    // var spell = SessionSpellCache.GetSpell(spellWord);
-    // spell?.Cast();   
     public void ScanSegment(string segment)
     {
-        //TODO
-        //remove all the spellwords that are currently in spellsInCurrentSegment
-        //obviously, first check whether the word really is there (if not, there probably was a false positive, so also log it, maybe make a counter)
         foreach(SpellWords spellWord in spellsInCurrentSegment)
         {
             if(ContainsSpellStringUtil(segment, spellWord))
@@ -53,27 +45,24 @@ public class SpellRecognitionManager : MonoBehaviour
 
         foreach(SpellWords spellWord in activeSpells)
         {
-            //TODO
+            //REVIEW
             //will it work like this, or do we have to somehow wait until the recursion executes fully?
+            //maybe use multithreading here?
             CheckForSpell(segment, spellWord);
         }
     }
 
     private void CheckForSpell(string segment, SpellWords spellWord)
     {
-        if(ContainsSpellStringUtil(segment, spellWord))
+        if(!ContainsSpellStringUtil(segment, spellWord))
         {
-            //TODO
-            //remove the string from segment
-            //add spell to spellsInCurrentSegment
-            //cast spell
-            //call this method again
+            return;
         }
-        else
-        {
-            //TODO
-            //return
-        }
+
+        spellsInCurrentSegment.Add(spellWord);
+        SessionSpellCache.CastSpell(spellWord);
+        segment = RemoveSpellStringUtil(segment, spellWord);
+        CheckForSpell(segment, spellWord);
     }
 
     public void ResetSegmentation()
@@ -94,12 +83,7 @@ public class SpellRecognitionManager : MonoBehaviour
         context = context.ToLower();
         string spellWordToRemove = spellToRemove.ToString().ToLower();
         int index = context.IndexOf(spellWordToRemove);
-
-        //TODO: can this if be removed, since the string deffo contains the spell at this point?
-        if(index != -1)
-        {
-            context = context.Remove(index, spellWordToRemove.Length).Trim();
-        }
+        context = index != -1 ? context.Remove(index, spellWordToRemove.Length).Trim() : context;
 
         return context;
     }

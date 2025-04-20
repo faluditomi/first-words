@@ -45,6 +45,12 @@ public static class SessionSpellCache
         }
     }
 
+    public static void CastSpell(SpellWords spellWord)
+    {
+        var spell = GetSpell(spellWord);
+        spell?.Cast();  
+    }
+
     public static Spell GetSpell(SpellWords spellWord)
     {
         string address = spellWord.ToString();
