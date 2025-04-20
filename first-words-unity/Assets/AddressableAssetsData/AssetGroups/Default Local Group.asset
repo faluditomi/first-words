@@ -14,7 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: 2b27af1849966ef4295bb9536e128847
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 0d8385dcbded9d84f8be77cc868175d5
+    m_Address: Assets/ScriptableObject/Spells/Right.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bcc783285861304dbe2746d59d351f0
+    m_Address: Assets/ScriptableObject/Spells/Back.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1dfecfdc228b6354eae8a5d52af0ce02
+    m_Address: Assets/ScriptableObject/Spells/Left.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3fd705544dc5b3647ac0012a2013fd4d
+    m_Address: Assets/ScriptableObject/Spells/Jump.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fde96a8ac4683374789433b2cc9479d5
+    m_Address: Assets/ScriptableObject/Spells/Forward.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 422b4b31cf8bc98438f71fa447f76328, type: 2}
   m_SchemaSet:
