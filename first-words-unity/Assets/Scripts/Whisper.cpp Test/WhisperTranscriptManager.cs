@@ -4,9 +4,12 @@ using UnityEngine.UI;
 using Whisper;
 using Whisper.Utils;
 
+//TODO: for now, this is a singleton, but that might have to change once the game becomes multiplayer
 public class WhisperTranscriptManager : MonoBehaviour
 {
-    
+
+    public static WhisperTranscriptManager Instance { get; private set; }
+
     private WhisperManager whisperManager;
     private MicrophoneRecord microphoneRecord;
     private WhisperStream whisperStream;
@@ -14,11 +17,17 @@ public class WhisperTranscriptManager : MonoBehaviour
     [SerializeField] private Text transcriptionTextUI;
     [SerializeField] private ScrollRect TranscriptionWindowScrollUI;
 
-    private string currentSegment;
-    private ArrayList activeSpells = new ArrayList();
-
     private void Awake()
     {
+        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         whisperManager = FindFirstObjectByType<WhisperManager>();
         microphoneRecord = FindFirstObjectByType<MicrophoneRecord>();
     }
@@ -45,9 +54,12 @@ public class WhisperTranscriptManager : MonoBehaviour
         }
     }
 
+    //TODO: instead of relying only on the segment updates, we could prep the spell (visuals, particals, etc.) when
+    //it is recognised in the update, and cast it for real when it appears in the finished segment
     private void OnSegmentUpdated(WhisperResult segment)
     {
-        print($"Segment updated: {segment.Result}");
+        Debug.Log($"Segment updated: {segment.Result}");
+        SpellRecognitionManager.Instance.ScanSegment(segment.Result);
         // currentSegment = segment.Result;
 
         // foreach(String spell in activeSpells)
@@ -65,8 +77,9 @@ public class WhisperTranscriptManager : MonoBehaviour
 
     private void OnSegmentFinished(WhisperResult segment)
     {
-        print($"Segment finished: {segment.Result}");
-        currentSegment = "";
+        Debug.Log($"Segment finished: {segment.Result}");
+        SpellRecognitionManager.Instance.ResetSegmentation();
+        // currentSegment = "";
     }
 
 }
