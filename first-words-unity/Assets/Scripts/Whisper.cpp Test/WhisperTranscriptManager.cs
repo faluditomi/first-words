@@ -1,16 +1,21 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Whisper;
 using Whisper.Utils;
 
-public class WhisperVoiceRecognition : MonoBehaviour
+public class WhisperTranscriptManager : MonoBehaviour
 {
+    
     private WhisperManager whisperManager;
     private MicrophoneRecord microphoneRecord;
     private WhisperStream whisperStream;
     
     [SerializeField] private Text transcriptionTextUI;
     [SerializeField] private ScrollRect TranscriptionWindowScrollUI;
+
+    private string currentSegment;
+    private ArrayList activeSpells = new ArrayList();
 
     private void Awake()
     {
@@ -25,7 +30,7 @@ public class WhisperVoiceRecognition : MonoBehaviour
         whisperStream.OnResultUpdated += OnResult;
         whisperStream.OnSegmentUpdated += OnSegmentUpdated;
         whisperStream.OnSegmentFinished += OnSegmentFinished;
-        whisperStream.OnStreamFinished += OnFinished;
+        // whisperStream.OnStreamFinished += OnFinished;
         
         microphoneRecord.StartRecord();
         whisperStream.StartStream();
@@ -33,22 +38,35 @@ public class WhisperVoiceRecognition : MonoBehaviour
     
     private void OnResult(string result)
     {
-        transcriptionTextUI.text = result;
-        UiUtils.ScrollDown(TranscriptionWindowScrollUI);
+        if(transcriptionTextUI && TranscriptionWindowScrollUI)
+        {
+            transcriptionTextUI.text = result;
+            UiUtils.ScrollDown(TranscriptionWindowScrollUI);
+        }
     }
 
     private void OnSegmentUpdated(WhisperResult segment)
     {
-        // print($"Segment updated: {segment.Result}");
+        print($"Segment updated: {segment.Result}");
+        // currentSegment = segment.Result;
+
+        // foreach(String spell in activeSpells)
+        // {
+        //     currentSegment.RemoveConsecutiveCharacters()
+        // }
+
+        // if(/* there is a spell in currentSegment */)
+        // {
+        //     // activate spell
+        //     // add spell-word to activeSpells
+        // }
+        
     }
 
     private void OnSegmentFinished(WhisperResult segment)
     {
-        // print($"Segment finished: {segment.Result}");
+        print($"Segment finished: {segment.Result}");
+        currentSegment = "";
     }
-        
-    private void OnFinished(string finalResult)
-    {
-        print("Stream finished!");
-    }
+
 }
