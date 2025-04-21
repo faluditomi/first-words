@@ -7,7 +7,6 @@ public class BasicCameraSwitcher : MonoBehaviour
     [SerializeField] private List<Transform> camPositions;
     private int currentCamPositionIndex = 0;
     private Spell switchCam;
-    private Spell camNumber;
 
     private void Start()
     {
@@ -16,25 +15,22 @@ public class BasicCameraSwitcher : MonoBehaviour
 
     private void OnEnable()
     {
-        switchCam = SessionSpellCache.GetSpell(SpellWords.SwitchCam);
+        //REVIEW
+        /* what if, i make a separate util class or smth with a coroutine (could also be a multithreaded solution) that takes the spell 
+           that i'm trying to subscribe to and the method i want to subscribe with, waits for spell caching to finish, and then creates 
+           the connection? */
+
+        switchCam = SessionSpellCache.GetSpell(SpellWords.Switch_Cam);
 
         if(switchCam != null)
         {
             switchCam.cast += SwitchToNextCam;
-        }
-        
-        camNumber = SessionSpellCache.GetSpell(SpellWords.CamNumber);
-
-        if(camNumber != null)
-        {
-            // camNumber.cast += SwitchToCamNumber;
         }
     }
 
     private void OnDisable()
     {
         switchCam.cast -= SwitchToNextCam;
-        // camNumber.cast -= SwitchToCamNumber;
     }
 
     private void SwitchToNextCam(SpellEventArgs args)
@@ -49,11 +45,6 @@ public class BasicCameraSwitcher : MonoBehaviour
         }
 
         SetToPositionIndex(currentCamPositionIndex);
-    }
-
-    private void SwitchToCamNumber(SpellEventArgs args)
-    {
-
     }
 
     private void SetToPositionIndex(int index)

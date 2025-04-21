@@ -1,3 +1,5 @@
+//NOTE
+// Name the spells as they are to be pronounced. Always use "_" instead of " " in the name.
 public enum SpellWords
 {
     
@@ -6,7 +8,8 @@ public enum SpellWords
     Left,
     Right,
     Jump,
-    SwitchCam,
-    CamNumber
+    Switch_Cam,
+    Reset,
+    Fuck
 
 }

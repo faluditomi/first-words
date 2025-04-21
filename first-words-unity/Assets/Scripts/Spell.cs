@@ -7,7 +7,6 @@ public class Spell : ScriptableObject
     
     public SpellWords spellWord;
     public float cooldownDuration;
-
     public event Action<SpellEventArgs> cast;
 
     public void Cast()

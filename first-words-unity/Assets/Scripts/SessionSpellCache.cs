@@ -52,7 +52,7 @@ public static class SessionSpellCache
     }
 
     //FIXME
-    // does this get called before the LoadSessionSpells finished running?
+    // this gets called before the LoadSessionSpells finishes running
     public static Spell GetSpell(SpellWords spellWord)
     {
         string address = spellWord.ToString();

@@ -78,17 +78,22 @@ public class SpellRecognitionManager : MonoBehaviour
 
     private bool ContainsSpellStringUtil(string context, SpellWords spellToCheck)
     {
-        return context.ToLower().Contains(spellToCheck.ToString().ToLower());
+        return context.ToLower().Contains(SpellEnumToStringUtil(spellToCheck));
     }
 
     private string RemoveSpellStringUtil(string context, SpellWords spellToRemove)
     {
         context = context.ToLower();
-        string spellWordToRemove = spellToRemove.ToString().ToLower();
+        string spellWordToRemove = SpellEnumToStringUtil(spellToRemove);
         int index = context.IndexOf(spellWordToRemove);
         context = index != -1 ? context.Remove(index, spellWordToRemove.Length).Trim() : context;
 
         return context;
+    }
+
+    private string SpellEnumToStringUtil(SpellWords spellWord)
+    {
+        return spellWord.ToString().ToLower().Replace("_", " ");
     }
 
 }
