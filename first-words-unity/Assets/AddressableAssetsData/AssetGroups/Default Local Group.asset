@@ -35,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d317b091ad93b94499d48745ac114a1
+    m_Address: Assets/ScriptableObject/Spells/SwitchCam.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fde96a8ac4683374789433b2cc9479d5
     m_Address: Assets/ScriptableObject/Spells/Forward.asset
     m_ReadOnly: 0

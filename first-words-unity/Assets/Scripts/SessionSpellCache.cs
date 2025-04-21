@@ -10,7 +10,7 @@ public static class SessionSpellCache
     private static Dictionary<string, Spell> _spells = new();
     private static Dictionary<string, AsyncOperationHandle<Spell>> _handles = new();
 
-    //TODO: for now, this is just called in an awake, but once we dynamically change the active spell based on the session,
+    //NOTE for now, this is just called in an awake, but once we dynamically change the active spell based on the session,
     //we can call this while each map is loading
     public static async void LoadSessionSpells(List<SpellWords> activeSpells)
     {

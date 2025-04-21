@@ -5,6 +5,8 @@ public enum SpellWords
     Back,
     Left,
     Right,
-    Jump
+    Jump,
+    SwitchCam,
+    CamNumber
 
 }

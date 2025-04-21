@@ -5,20 +5,40 @@ public class BasicCameraSwitcher : MonoBehaviour
 {
 
     [SerializeField] private List<Transform> camPositions;
+    private Spell switchCam;
+    private Spell camNumber;
 
-    // private void OnEnable()
-    // {
-    //     Player.OnPlayerDied += HandlePlayerDeath;
-    // }
+    private void OnEnable()
+    {
+        switchCam = SessionSpellCache.GetSpell(SpellWords.SwitchCam);
 
-    // private void OnDisable()
-    // {
-    //     Player.OnPlayerDied -= HandlePlayerDeath;
-    // }
+        if(switchCam != null)
+        {
+            switchCam.cast += SwitchToNextCam;
+        }
+        
+        camNumber = SessionSpellCache.GetSpell(SpellWords.CamNumber);
 
-    // private void HandlePlayerDeath()
-    // {
-    //     Debug.Log("Player has died. Game over!");
-    // }
+        if(camNumber != null)
+        {
+            camNumber.cast += SwitchToCamNumber;
+        }
+    }
+
+    private void OnDisable()
+    {
+        switchCam.cast -= SwitchToNextCam;
+        camNumber.cast -= SwitchToCamNumber;
+    }
+
+    private void SwitchToNextCam(SpellEventArgs args)
+    {
+        
+    }
+
+    private void SwitchToCamNumber(SpellEventArgs args)
+    {
+
+    }
 
 }

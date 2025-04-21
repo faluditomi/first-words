@@ -46,8 +46,8 @@ public class SpellRecognitionManager : MonoBehaviour
         foreach(SpellWords spellWord in activeSpells)
         {
             //REVIEW
-            //will it work like this, or do we have to somehow wait until the recursion executes fully?
-            //maybe use multithreading here?
+            // will it work like this, or do we have to somehow wait until the recursion executes fully?
+            // maybe use multithreading here?
             CheckForSpell(segment, spellWord);
         }
     }
@@ -60,6 +60,8 @@ public class SpellRecognitionManager : MonoBehaviour
         }
 
         spellsInCurrentSegment.Add(spellWord);
+        //TODO
+        // check if the spellWord is of type "i need context from speech" and pass that context along somehow
         SessionSpellCache.CastSpell(spellWord);
         segment = RemoveSpellStringUtil(segment, spellWord);
         CheckForSpell(segment, spellWord);
@@ -68,8 +70,9 @@ public class SpellRecognitionManager : MonoBehaviour
     public void ResetSegmentation()
     {
         //TODO
-        //maybe make the checks into a coroutine, so we can stop them here
-        //(so it doesn't try to match spells with an empty spellsInCurrentSegment)
+        // maybe make the checks into a coroutine, so we can stop them here
+        // (so it doesn't try to match spells with an empty spellsInCurrentSegment)
+        // (or maybe instead of having a global variable, pass the spell list around as a parameter)
         spellsInCurrentSegment = new List<SpellWords>();
     }
 
