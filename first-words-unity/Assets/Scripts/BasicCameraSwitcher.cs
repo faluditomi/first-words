@@ -5,8 +5,14 @@ public class BasicCameraSwitcher : MonoBehaviour
 {
 
     [SerializeField] private List<Transform> camPositions;
+    private int currentCamPositionIndex = 0;
     private Spell switchCam;
     private Spell camNumber;
+
+    private void Start()
+    {
+        SetToPositionIndex(currentCamPositionIndex);
+    }
 
     private void OnEnable()
     {
@@ -21,24 +27,39 @@ public class BasicCameraSwitcher : MonoBehaviour
 
         if(camNumber != null)
         {
-            camNumber.cast += SwitchToCamNumber;
+            // camNumber.cast += SwitchToCamNumber;
         }
     }
 
     private void OnDisable()
     {
         switchCam.cast -= SwitchToNextCam;
-        camNumber.cast -= SwitchToCamNumber;
+        // camNumber.cast -= SwitchToCamNumber;
     }
 
     private void SwitchToNextCam(SpellEventArgs args)
     {
-        
+        if(currentCamPositionIndex + 1 < camPositions.Count)
+        {
+            currentCamPositionIndex++;
+        }
+        else
+        {
+            currentCamPositionIndex = 0;
+        }
+
+        SetToPositionIndex(currentCamPositionIndex);
     }
 
     private void SwitchToCamNumber(SpellEventArgs args)
     {
 
+    }
+
+    private void SetToPositionIndex(int index)
+    {
+        transform.position = camPositions[index].position;
+        transform.rotation = camPositions[index].rotation;
     }
 
 }

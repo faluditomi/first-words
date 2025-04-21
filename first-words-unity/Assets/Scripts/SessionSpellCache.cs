@@ -51,6 +51,8 @@ public static class SessionSpellCache
         spell?.Cast();  
     }
 
+    //FIXME
+    // does this get called before the LoadSessionSpells finished running?
     public static Spell GetSpell(SpellWords spellWord)
     {
         string address = spellWord.ToString();
