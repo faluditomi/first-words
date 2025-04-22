@@ -15,17 +15,7 @@ public class BasicCameraSwitcher : MonoBehaviour
 
     private void OnEnable()
     {
-        //REVIEW
-        /* what if, i make a separate util class or smth with a coroutine (could also be a multithreaded solution) that takes the spell 
-           that i'm trying to subscribe to and the method i want to subscribe with, waits for spell caching to finish, and then creates 
-           the connection? */
-
-        switchCam = SessionSpellCache.GetSpell(SpellWords.Switch_Cam);
-
-        if(switchCam != null)
-        {
-            switchCam.cast += SwitchToNextCam;
-        }
+        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Switch_Cam, SwitchToNextCam, (spell) => switchCam = spell);
     }
 
     private void OnDisable()

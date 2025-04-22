@@ -8,11 +8,10 @@ public class SpellRecognitionManager : MonoBehaviour
     
     [SerializeField] private List<SpellWords> activeSpells;
 
-    private List<SpellWords> spellsInCurrentSegment;
+    private List<SpellWords> spellsInCurrentSegment = new();
 
     private void Awake()
     {
-        
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -20,7 +19,10 @@ public class SpellRecognitionManager : MonoBehaviour
         }
 
         Instance = this;
+    }
 
+    private void Start()
+    {
         SessionSpellCache.LoadSessionSpells(activeSpells);
     }
 
@@ -31,17 +33,7 @@ public class SpellRecognitionManager : MonoBehaviour
 
     public void ScanSegment(string segment)
     {
-        foreach(SpellWords spellWord in spellsInCurrentSegment)
-        {
-            if(ContainsSpellStringUtil(segment, spellWord))
-            {
-                segment = RemoveSpellStringUtil(segment, spellWord);
-            }
-            else
-            {
-                Debug.LogWarning($"Potential false positive detected: {spellWord}");
-            }
-        }
+        segment = RemoveRegisteredSpells(segment);
 
         foreach(SpellWords spellWord in activeSpells)
         {
@@ -50,6 +42,26 @@ public class SpellRecognitionManager : MonoBehaviour
             // maybe use multithreading here?
             CheckForSpell(segment, spellWord);
         }
+    }
+
+    private string RemoveRegisteredSpells(string segment)
+    {
+        if(spellsInCurrentSegment.Count > 0)
+        {
+            foreach(SpellWords spellWord in spellsInCurrentSegment)
+            {
+                if(ContainsSpellStringUtil(segment, spellWord))
+                {
+                    segment = RemoveSpellStringUtil(segment, spellWord);
+                }
+                else
+                {
+                    Debug.LogWarning($"Potential false positive detected: {spellWord}");
+                }
+            }
+        }
+
+        return segment;
     }
 
     private void CheckForSpell(string segment, SpellWords spellWord)
@@ -76,6 +88,8 @@ public class SpellRecognitionManager : MonoBehaviour
         spellsInCurrentSegment = new List<SpellWords>();
     }
 
+    //NOTE
+    // these util methods could go in a separate SpellWordUtil class if they are ever to be used in other scripts
     private bool ContainsSpellStringUtil(string context, SpellWords spellToCheck)
     {
         return context.ToLower().Contains(SpellEnumToStringUtil(spellToCheck));

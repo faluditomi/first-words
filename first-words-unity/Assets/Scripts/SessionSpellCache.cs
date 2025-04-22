@@ -9,6 +9,7 @@ public static class SessionSpellCache
 
     private static Dictionary<string, Spell> _spells = new();
     private static Dictionary<string, AsyncOperationHandle<Spell>> _handles = new();
+    private static bool _isCacheReady = false;
 
     //NOTE for now, this is just called in an awake, but once we dynamically change the active spell based on the session,
     //we can call this while each map is loading
@@ -18,6 +19,8 @@ public static class SessionSpellCache
         {
             await LoadSpell(spellWord);
         }
+
+        _isCacheReady = true;
     }
 
     public static async Task<bool> LoadSpell(SpellWords spellWord)
@@ -51,8 +54,6 @@ public static class SessionSpellCache
         spell?.Cast();  
     }
 
-    //FIXME
-    // this gets called before the LoadSessionSpells finishes running
     public static Spell GetSpell(SpellWords spellWord)
     {
         string address = spellWord.ToString();
@@ -80,6 +81,11 @@ public static class SessionSpellCache
     public static List<Spell> GetAllLoadedSpells()
     {
         return new List<Spell>(_spells.Values);
+    }
+
+    public static bool IsSpellCacheReady()
+    {
+        return _isCacheReady;
     }
     
 }

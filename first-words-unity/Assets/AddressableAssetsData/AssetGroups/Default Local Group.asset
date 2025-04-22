@@ -16,32 +16,47 @@ MonoBehaviour:
   m_GUID: 2b27af1849966ef4295bb9536e128847
   m_SerializeEntries:
   - m_GUID: 0d8385dcbded9d84f8be77cc868175d5
-    m_Address: Assets/ScriptableObject/Spells/Right.asset
+    m_Address: Right
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14112e70c7b9d3a498475dd9502dfe2c
+    m_Address: Fuck
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1bcc783285861304dbe2746d59d351f0
-    m_Address: Assets/ScriptableObject/Spells/Back.asset
+    m_Address: Back
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1dfecfdc228b6354eae8a5d52af0ce02
-    m_Address: Assets/ScriptableObject/Spells/Left.asset
+    m_Address: Left
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25df2086522d3dd4ca9902b6412ad9f7
+    m_Address: Assets/ScriptableObject/Spells
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3fd705544dc5b3647ac0012a2013fd4d
-    m_Address: Assets/ScriptableObject/Spells/Jump.asset
+    m_Address: Jump
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6d317b091ad93b94499d48745ac114a1
-    m_Address: Assets/ScriptableObject/Spells/SwitchCam.asset
+    m_Address: Switch_Cam
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa75cb23d70aa204fb0f83e3fa8f00a7
+    m_Address: Reset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fde96a8ac4683374789433b2cc9479d5
-    m_Address: Assets/ScriptableObject/Spells/Forward.asset
+    m_Address: Forward
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

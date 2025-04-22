@@ -528,6 +528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526083734}
   - component: {fileID: 526083736}
+  - component: {fileID: 526083737}
   m_Layer: 0
   m_Name: Spell Recognition Manager
   m_TagString: Untagged
@@ -562,7 +563,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d6ef93c8cb2ec4892959b6c406da97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeSpells: 00000000010000000200000003000000040000000500000006000000
+  activeSpells: 0000000001000000020000000300000004000000050000000600000007000000
+--- !u!114 &526083737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526083733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee85aa105f42914493c0729b77334f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &562431923
 GameObject:
   m_ObjectHideFlags: 0
