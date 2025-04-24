@@ -6,7 +6,6 @@ public class BasicCameraSwitcher : MonoBehaviour
 
     [SerializeField] private List<Transform> camPositions;
     private int currentCamPositionIndex = 0;
-    private Spell<SpellArgs> switchCam;
 
     private void Start()
     {
@@ -15,12 +14,12 @@ public class BasicCameraSwitcher : MonoBehaviour
 
     private void OnEnable()
     {
-        SpellEventSubscriber.Instance.SubscribeToSpell<SpellArgs>(SpellWords.Switch_Cam, SwitchToNextCam, (spell) => switchCam = spell);
+        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Switch_Cam, SwitchToNextCam);
     }
 
     private void OnDisable()
     {
-        switchCam.cast -= SwitchToNextCam;
+        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Switch_Cam, SwitchToNextCam);
     }
 
     private void SwitchToNextCam(SpellArgs args)

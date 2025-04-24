@@ -7,8 +7,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public static class SessionSpellCache
 {
 
-    private static Dictionary<string, Spell<SpellArgs>> _spells = new();
-    private static Dictionary<string, AsyncOperationHandle<Spell<SpellArgs>>> _handles = new();
+    private static Dictionary<string, Spell> _spells = new();
+    private static Dictionary<string, AsyncOperationHandle<Spell>> _handles = new();
     private static bool _isCacheReady = false;
 
     //NOTE for now, this is just called in an awake, but once we dynamically change the active spell based on the session,
@@ -32,13 +32,14 @@ public static class SessionSpellCache
             return true;
         }
 
-        var handle = Addressables.LoadAssetAsync<Spell<SpellArgs>>(address);
+        var handle = Addressables.LoadAssetAsync<Spell>(address);
         await handle.Task;
 
         if(handle.Status == AsyncOperationStatus.Succeeded)
         {
             _spells[address] = handle.Result;
             _handles[address] = handle;
+            Debug.Log($"Loaded spell: {address}");
             return true;
         }
         else
@@ -50,17 +51,17 @@ public static class SessionSpellCache
 
     public static void CastSpell(SpellWords spellWord)
     {
-        var spell = GetSpell<SpellArgs>(spellWord);
+        var spell = GetSpell(spellWord);
         spell?.Cast();  
     }
 
-    public static Spell<TArgs> GetSpell<TArgs>(SpellWords spellWord) where TArgs : SpellArgs
+    public static Spell GetSpell(SpellWords spellWord)
     {
         string address = spellWord.ToString();
 
         if(_spells.TryGetValue(address, out var spell))
         {
-            return spell as Spell<TArgs>;
+            return spell;
         }
 
         Debug.LogError($"Spell not found: {address}");
@@ -78,9 +79,9 @@ public static class SessionSpellCache
         _handles.Clear();
     }
 
-    public static List<Spell<SpellArgs>> GetAllLoadedSpells()
+    public static List<Spell> GetAllLoadedSpells()
     {
-        return new List<Spell<SpellArgs>>(_spells.Values);
+        return new List<Spell>(_spells.Values);
     }
 
     public static bool IsSpellCacheReady()

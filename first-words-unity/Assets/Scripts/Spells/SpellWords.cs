@@ -8,6 +8,7 @@ public enum SpellWords
     Left,
     Right,
     Jump,
+    Stop,
     Switch_Cam,
     Reset,
     Fuck

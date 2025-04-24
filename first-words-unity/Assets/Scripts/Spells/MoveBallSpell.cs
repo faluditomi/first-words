@@ -1,19 +1,21 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MoveBallSpell", menuName = "Spells/MoveBallSpell")]
-public class MoveBallSpell : Spell<MoveBallArgs>
+public class MoveBallSpell : Spell
 {
     
     public Vector3 direction;
     public float strength;
 
-    protected override MoveBallArgs CreateArgs()
+    protected override SpellArgs CreateArgs()
     {
-        return new MoveBallArgs
+        MoveBallArgs myArgs = new MoveBallArgs
         {
             direction = this.direction.normalized,
             strength = this.strength
         };
+
+        return CopyTo(myArgs);
     }
 
 }

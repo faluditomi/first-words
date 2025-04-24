@@ -2,13 +2,6 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    private Spell<MoveBallArgs> forward;
-    private Spell<MoveBallArgs> back;
-    private Spell<MoveBallArgs> left;
-    private Spell<MoveBallArgs> right;
-    private Spell<MoveBallArgs> jump;
-    private Spell<MoveBallArgs> reset;
-    private Spell<MoveBallArgs> fuck;
     private Rigidbody myRigidbody;
     private Transform camTransform;
     private Vector3 startingPos;
@@ -26,30 +19,35 @@ public class BallController : MonoBehaviour
 
     private void OnEnable()
     {
-        SpellEventSubscriber.Instance.SubscribeToSpell<MoveBallArgs>(SpellWords.Forward, MoveBall, (spell) => forward = spell);
-        SpellEventSubscriber.Instance.SubscribeToSpell<MoveBallArgs>(SpellWords.Back, MoveBall, (spell) => back = spell);
-        SpellEventSubscriber.Instance.SubscribeToSpell<MoveBallArgs>(SpellWords.Left, MoveBall, (spell) => left = spell);
-        SpellEventSubscriber.Instance.SubscribeToSpell<MoveBallArgs>(SpellWords.Right, MoveBall, (spell) => right = spell);
-        SpellEventSubscriber.Instance.SubscribeToSpell<MoveBallArgs>(SpellWords.Jump, MoveBall, (spell) => jump = spell);
-        SpellEventSubscriber.Instance.SubscribeToSpell<MoveBallArgs>(SpellWords.Reset, ResetBall, (spell) => reset = spell);
-        SpellEventSubscriber.Instance.SubscribeToSpell<MoveBallArgs>(SpellWords.Fuck, Fuck, (spell) => fuck = spell);
+        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Forward, MoveBall);
+        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Back, MoveBall);
+        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Left, MoveBall);
+        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Right, MoveBall);
+        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Jump, MoveBall);
+        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Stop, StopBall);
+        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Reset, ResetBall);
+        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Fuck, Fuck);
     }
 
     private void OnDisable()
     {
-        forward.cast -= MoveBall;
-        back.cast -= MoveBall;
-        left.cast -= MoveBall;
-        right.cast -= MoveBall;
-        jump.cast -= MoveBall;
-        reset.cast -= ResetBall;
-        fuck.cast -= Fuck;
+        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Forward, MoveBall);
+        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Back, MoveBall);
+        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Left, MoveBall);
+        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Right, MoveBall);
+        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Jump, MoveBall);
+        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Stop, StopBall);
+        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Reset, ResetBall);
+        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Fuck, Fuck);
     }
 
     //REVIEW
     // this might handle Jump in a funky way
-    private void MoveBall(MoveBallArgs args)
+    private void MoveBall(SpellArgs args)
     {
+        Spell mySpell = SessionSpellCache.GetSpell(args.spellWord);
+        MoveBallArgs myArgs = mySpell.GetMyArgs<MoveBallArgs>(args);
+
         Vector3 camForward = camTransform.forward;
         Vector3 camRight = camTransform.right;
 
@@ -59,17 +57,23 @@ public class BallController : MonoBehaviour
         camForward.Normalize();
         camRight.Normalize();
 
-        Vector3 relativeDirection = (camForward * args.direction.z) + (camRight * args.direction.x);
+        Vector3 relativeDirection = (camForward * myArgs.direction.z) + (camRight * myArgs.direction.x);
 
-        myRigidbody.AddForce(relativeDirection * args.strength, ForceMode.Impulse);
+        myRigidbody.AddForce(relativeDirection * myArgs.strength, ForceMode.Impulse);
     }
 
-    private void ResetBall(MoveBallArgs args)
+    private void StopBall(SpellArgs args)
+    {
+        myRigidbody.linearVelocity = Vector3.zero;
+        myRigidbody.angularVelocity = Vector3.zero;
+    }
+
+    private void ResetBall(SpellArgs args)
     {
         myRigidbody.MovePosition(startingPos);
     }
 
-    private void Fuck(MoveBallArgs args)
+    private void Fuck(SpellArgs args)
     {
         Vector3 direction = new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
         

@@ -25,7 +25,7 @@ public class SpellRecognitionManager : MonoBehaviour
     {
         SessionSpellCache.LoadSessionSpells(activeSpells);
     }
-
+    
     private void OnDisable()
     {
         SessionSpellCache.UnloadAll();

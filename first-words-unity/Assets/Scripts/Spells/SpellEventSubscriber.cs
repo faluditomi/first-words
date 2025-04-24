@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -21,22 +22,38 @@ public class SpellEventSubscriber : MonoBehaviour
         Instance = this;
     }
 
-    public void SubscribeToSpell<TArgs>(SpellWords spellWord, System.Action<TArgs> action, System.Action<Spell<TArgs>> onSpellLoaded) where TArgs : SpellArgs
+    public void SubscribeToSpell(SpellWords spellWord, System.Action<SpellArgs> action)
     {
-        StartCoroutine(SubscribeToSpellBehaviour(spellWord, action, onSpellLoaded));
+        StartCoroutine(SubscribeToSpellBehaviour(spellWord, action));
     }
 
-    private IEnumerator SubscribeToSpellBehaviour<TArgs>(SpellWords spellWord, System.Action<TArgs> action, System.Action<Spell<TArgs>> onSpellLoaded) where TArgs : SpellArgs
+    public void UnsubscribeFromSpell(SpellWords spellWord, System.Action<SpellArgs> action)
     {
-        yield return new WaitUntil(() => SessionSpellCache.IsSpellCacheReady());
-        Spell<TArgs> spell = SessionSpellCache.GetSpell<TArgs>(spellWord);
+        Spell spell = SessionSpellCache.GetSpell(spellWord);
 
-        if (spell != null)
+        if(spell == null)
         {
-            spell.cast += (System.Action<SpellArgs>)(object)action;
+            Debug.LogWarning($"Spell {spellWord} not found in cache. Cannot unsubscribe.");
+            return;
         }
 
-        onSpellLoaded?.Invoke(spell);
+        spell.cast -= action;
+        Debug.Log($"Unsubscribed from {spellWord} spell event.");
+    }
+
+    private IEnumerator SubscribeToSpellBehaviour(SpellWords spellWord, System.Action<SpellArgs> action)
+    {
+        yield return new WaitUntil(() => SessionSpellCache.IsSpellCacheReady());
+        Spell spell = SessionSpellCache.GetSpell(spellWord);
+        
+        if(spell == null)
+        {
+            Debug.LogWarning($"Spell {spellWord} not found in cache. Cannot subscribe.");
+            yield break;
+        }
+
+        spell.cast += action;
+        Debug.Log($"Subscribed to {spellWord} spell event.");
     }
 
 }
