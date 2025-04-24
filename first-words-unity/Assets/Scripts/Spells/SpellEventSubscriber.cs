@@ -7,6 +7,7 @@ using UnityEngine;
     </summary> */
 public class SpellEventSubscriber : MonoBehaviour
 {
+
     public static SpellEventSubscriber Instance { get; private set; }
 
     private void Awake()
@@ -20,25 +21,22 @@ public class SpellEventSubscriber : MonoBehaviour
         Instance = this;
     }
 
-    public void SubscribeToSpell(SpellWords spellWord, System.Action<SpellEventArgs> action, System.Action<Spell> onSpellLoaded)
+    public void SubscribeToSpell<TArgs>(SpellWords spellWord, System.Action<TArgs> action, System.Action<Spell<TArgs>> onSpellLoaded) where TArgs : SpellArgs
     {
         StartCoroutine(SubscribeToSpellBehaviour(spellWord, action, onSpellLoaded));
     }
 
-    private IEnumerator SubscribeToSpellBehaviour(SpellWords spellWord, System.Action<SpellEventArgs> action, System.Action<Spell> onSpellLoaded)
+    private IEnumerator SubscribeToSpellBehaviour<TArgs>(SpellWords spellWord, System.Action<TArgs> action, System.Action<Spell<TArgs>> onSpellLoaded) where TArgs : SpellArgs
     {
-        Debug.Log("STARED SUBSCRIPTION PROCESS");
         yield return new WaitUntil(() => SessionSpellCache.IsSpellCacheReady());
-        Debug.Log("WAITED UNTIL CACHE READY");
-        Spell spell = SessionSpellCache.GetSpell(spellWord);
-        Debug.Log($"FOUND SPELL: {spell}");
+        Spell<TArgs> spell = SessionSpellCache.GetSpell<TArgs>(spellWord);
 
         if (spell != null)
         {
-            spell.cast += action;
+            spell.cast += (System.Action<SpellArgs>)(object)action;
         }
 
         onSpellLoaded?.Invoke(spell);
-        Debug.Log("INVOKED EVENT");
     }
+
 }

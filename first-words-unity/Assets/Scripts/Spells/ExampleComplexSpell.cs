@@ -3,12 +3,12 @@ using UnityEngine;
 //NOTE
 // this is an example class for later on how we can create spells that require unique input arguments
 [CreateAssetMenu(fileName = "ExampleComplexSpell", menuName = "Spells/ExampleComplexSpell")]
-public class ExampleComplexSpell : Spell
+public class ExampleComplexSpell : Spell<ExampleComplexArgs>
 {
 
     public int someProperty;
     
-    protected override SpellEventArgs CreateArgs()
+    protected override ExampleComplexArgs CreateArgs()
     {
         return new ExampleComplexArgs
         {
@@ -21,7 +21,7 @@ public class ExampleComplexSpell : Spell
 
 }
 
-public class ExampleComplexArgs : SpellEventArgs
+public class ExampleComplexArgs : SpellArgs
 {
 
     public int someProperty;

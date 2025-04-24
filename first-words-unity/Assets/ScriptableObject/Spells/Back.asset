@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0719a5dd722d3478f4cabce3a2de4c, type: 3}
+  m_Script: {fileID: 11500000, guid: ba0910bdfcbb39242b4869a7e2f3cc24, type: 3}
   m_Name: Back
   m_EditorClassIdentifier: 
   spellWord: 1
   cooldownDuration: 0
+  direction: {x: 0, y: 0, z: -1}
+  strength: 10
