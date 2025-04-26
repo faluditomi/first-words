@@ -1,29 +1,36 @@
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class SpellRecognitionManager : MonoBehaviour
 {
 
-    public static SpellRecognitionManager Instance { get; private set; }
+    public static SpellRecognitionManager _instance { get; private set; }
     
     [SerializeField] private List<SpellWords> activeSpells;
-
-    private List<SpellWords> spellsInCurrentSegment = new();
+    private ConcurrentBag<SpellWords> spellsInCurrentSegment = new();
+    private CancellationTokenSource cancellationTokenSource;
+    private Dictionary<SpellWords, string> spellWordCache;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        Instance = this;
+        _instance = this;
     }
 
     private void Start()
     {
         SessionSpellCache.LoadSessionSpells(activeSpells);
+        spellWordCache = activeSpells.ToDictionary(spell => spell, spell => SpellEnumToStringUtil(spell));
     }
     
     private void OnDisable()
@@ -33,14 +40,40 @@ public class SpellRecognitionManager : MonoBehaviour
 
     public void ScanSegment(string segment)
     {
+        cancellationTokenSource?.Cancel();
+        cancellationTokenSource = new CancellationTokenSource();
+        var token = cancellationTokenSource.Token;
+
         segment = RemoveRegisteredSpells(segment);
 
-        foreach(SpellWords spellWord in activeSpells)
+        try
         {
-            //REVIEW
-            // will it work like this, or do we have to somehow wait until the recursion executes fully?
-            // maybe use multithreading here?
-            CheckForSpell(segment, spellWord);
+            Parallel.ForEach(activeSpells, new ParallelOptions { CancellationToken = token }, spellWord =>
+            {
+                CheckForSpell(segment, spellWord, token);
+            });
+        }
+        catch(OperationCanceledException)
+        {
+            Debug.LogError("ScanSegment operation was canceled before segment got processed.");
+        }
+    }
+
+    //TODO
+    // check if the spellWord is of type "i need context from speech" and pass that context along somehow
+    private void CheckForSpell(string segment, SpellWords spellWord, CancellationToken token)
+    {
+        while(!token.IsCancellationRequested && ContainsSpellStringUtil(segment, spellWord))
+        {
+            spellsInCurrentSegment.Add(spellWord);
+            SessionSpellCache.CastSpell(spellWord);
+            // segment = RemoveSpellStringUtil(segment, spellWord);
+            segment = RemoveSpellAndBeforeUtil(segment, spellWord);
+        }
+
+        if(token.IsCancellationRequested)
+        {
+            Debug.LogError($"CheckForSpell was canceled for segment: {segment}");
         }
     }
 
@@ -64,45 +97,40 @@ public class SpellRecognitionManager : MonoBehaviour
         return segment;
     }
 
-    private void CheckForSpell(string segment, SpellWords spellWord)
-    {
-        if(!ContainsSpellStringUtil(segment, spellWord))
-        {
-            return;
-        }
-
-        spellsInCurrentSegment.Add(spellWord);
-        //TODO
-        // check if the spellWord is of type "i need context from speech" and pass that context along somehow
-        SessionSpellCache.CastSpell(spellWord);
-        segment = RemoveSpellStringUtil(segment, spellWord);
-        CheckForSpell(segment, spellWord);
-    }
-
     public void ResetSegmentation()
     {
+        if (cancellationTokenSource != null)
+        {
+            cancellationTokenSource.Cancel(); // Cancel all running tasks
+            Debug.Log($"ResetSegmentation: Canceled running tasks.");
+        }
+
         //TODO
         // maybe make the checks into a coroutine, so we can stop them here
         // (so it doesn't try to match spells with an empty spellsInCurrentSegment)
         // (or maybe instead of having a global variable, pass the spell list around as a parameter)
-        spellsInCurrentSegment = new List<SpellWords>();
+        spellsInCurrentSegment = new ConcurrentBag<SpellWords>();
     }
 
     //NOTE
     // these util methods could go in a separate SpellWordUtil class if they are ever to be used in other scripts
     private bool ContainsSpellStringUtil(string context, SpellWords spellToCheck)
     {
-        return context.ToLower().Contains(SpellEnumToStringUtil(spellToCheck));
+        return context.ToLower().Contains(spellWordCache[spellToCheck]);
     }
 
     private string RemoveSpellStringUtil(string context, SpellWords spellToRemove)
     {
-        context = context.ToLower();
-        string spellWordToRemove = SpellEnumToStringUtil(spellToRemove);
-        int index = context.IndexOf(spellWordToRemove);
-        context = index != -1 ? context.Remove(index, spellWordToRemove.Length).Trim() : context;
+        string spellWordToRemove = spellWordCache[spellToRemove];
+        int index = context.IndexOf(spellWordToRemove, StringComparison.OrdinalIgnoreCase);
+        return index != -1 ? context.Remove(index, spellWordToRemove.Length).Trim() : context;
+    }
 
-        return context;
+    private string RemoveSpellAndBeforeUtil(string context, SpellWords spellToRemove)
+    {
+        string spellWordToRemove = spellWordCache[spellToRemove];
+        int index = context.IndexOf(spellWordToRemove, StringComparison.OrdinalIgnoreCase);
+        return index != -1 ? context.Substring(index + spellWordToRemove.Length).Trim() : context;
     }
 
     private string SpellEnumToStringUtil(SpellWords spellWord)

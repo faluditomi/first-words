@@ -1,29 +1,5 @@
 {
   "dependencies": {
-    "com.github.asus4.mediapipe": {
-      "version": "file:com.github.asus4.mediapipe",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.github.asus4.tflite": "2.17.0",
-        "com.github.asus4.tflite.common": "2.17.0"
-      }
-    },
-    "com.github.asus4.tflite": {
-      "version": "file:com.github.asus4.tflite",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "com.github.asus4.tflite.common": {
-      "version": "file:com.github.asus4.tflite.common",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.unity.burst": "1.8.12",
-        "com.github.asus4.tflite": "2.17.0"
-      }
-    },
     "com.unity.addressables": {
       "version": "2.2.2",
       "depth": 0,
@@ -50,7 +26,7 @@
     },
     "com.unity.burst": {
       "version": "1.8.18",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
@@ -387,7 +363,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "275406258aca21fe7753cf0724a65f06fd464eea"
+      "hash": "529a628a915a97799e89e061af9cb7c71407124d"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",

@@ -9,17 +9,18 @@ using UnityEngine;
 public class SpellEventSubscriber : MonoBehaviour
 {
 
-    public static SpellEventSubscriber Instance { get; private set; }
+    private static SpellEventSubscriber _instance;
 
-    private void Awake()
+    public static SpellEventSubscriber Instance()
     {
-        if (Instance != null && Instance != this)
+        if(_instance == null)
         {
-            Destroy(gameObject);
-            return;
+            var obj = new GameObject("SpellEventSubscriber");
+            _instance = obj.AddComponent<SpellEventSubscriber>();
+            DontDestroyOnLoad(obj);
         }
 
-        Instance = this;
+        return _instance;
     }
 
     public void SubscribeToSpell(SpellWords spellWord, System.Action<SpellArgs> action)

@@ -14,12 +14,14 @@ public class BasicCameraSwitcher : MonoBehaviour
 
     private void OnEnable()
     {
-        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Switch_Cam, SwitchToNextCam);
+        SpellEventSubscriber.Instance().SubscribeToSpell(SpellWords.Switch_Cam, SwitchToNextCam);
+        SpellEventSubscriber.Instance().SubscribeToSpell(SpellWords.Reset, ResetCam);
     }
 
     // private void OnDisable()
     // {
-    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Switch_Cam, SwitchToNextCam);
+    //     SpellEventSubscriber.Instance().UnsubscribeFromSpell(SpellWords.Switch_Cam, SwitchToNextCam);
+    //     SpellEventSubscriber.Instance().UnsubscribeFromSpell(SpellWords.Reset, ResetCam);
     // }
 
     private void SwitchToNextCam(SpellArgs args)
@@ -33,6 +35,12 @@ public class BasicCameraSwitcher : MonoBehaviour
             currentCamPositionIndex = 0;
         }
 
+        SetToPositionIndex(currentCamPositionIndex);
+    }
+
+    private void ResetCam(SpellArgs args)
+    {
+        currentCamPositionIndex = 0;
         SetToPositionIndex(currentCamPositionIndex);
     }
 

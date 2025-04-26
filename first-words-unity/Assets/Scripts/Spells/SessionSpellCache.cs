@@ -52,7 +52,7 @@ public static class SessionSpellCache
     public static void CastSpell(SpellWords spellWord)
     {
         var spell = GetSpell(spellWord);
-        spell?.Cast();  
+        UnityMainThreadDispatcher.Instance().Enqueue(() => spell?.Cast());
     }
 
     public static Spell GetSpell(SpellWords spellWord)

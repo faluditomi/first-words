@@ -15,4 +15,4 @@ MonoBehaviour:
   spellWord: 1
   cooldownDuration: 0
   direction: {x: 0, y: 0, z: -1}
-  strength: 10
+  strength: 5

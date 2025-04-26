@@ -9,7 +9,7 @@ using Whisper.Utils;
 public class WhisperTranscriptManager : MonoBehaviour
 {
 
-    public static WhisperTranscriptManager Instance { get; private set; }
+    public static WhisperTranscriptManager _instance { get; private set; }
 
     private WhisperManager whisperManager;
     private MicrophoneRecord microphoneRecord;
@@ -20,13 +20,13 @@ public class WhisperTranscriptManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        Instance = this;
+        _instance = this;
 
         whisperManager = FindFirstObjectByType<WhisperManager>();
         microphoneRecord = FindFirstObjectByType<MicrophoneRecord>();
@@ -44,7 +44,19 @@ public class WhisperTranscriptManager : MonoBehaviour
         microphoneRecord.StartRecord();
         whisperStream.StartStream();
     }
-    
+
+    private void OnDestroy()
+    {
+        whisperStream.OnResultUpdated -= OnResult;
+        whisperStream.OnSegmentUpdated -= OnSegmentUpdated;
+        whisperStream.OnSegmentFinished -= OnSegmentFinished;
+        // whisperStream.OnStreamFinished -= OnFinished;
+
+        microphoneRecord.StopRecord();
+        whisperStream.StopStream();
+        whisperStream = null;
+    }
+
     private void OnResult(string result)
     {
         if(transcriptionTextUI && TranscriptionWindowScrollUI)
@@ -58,15 +70,15 @@ public class WhisperTranscriptManager : MonoBehaviour
     //it is recognised in the update, and cast it for real when it appears in the finished segment
     private void OnSegmentUpdated(WhisperResult segment)
     {
-        // Debug.Log($"Segment updated: {segment.Result}");
-        SpellRecognitionManager.Instance.ScanSegment(segment.Result);
+        Debug.Log($"Segment updated: {segment.Result}");
+        SpellRecognitionManager._instance.ScanSegment(segment.Result);
         
     }
 
     private void OnSegmentFinished(WhisperResult segment)
     {
-        // Debug.Log($"Segment finished: {segment.Result}");
-        SpellRecognitionManager.Instance.ResetSegmentation();
+        Debug.Log($"Segment finished: {segment.Result}");
+        SpellRecognitionManager._instance.ResetSegmentation();
     }
 
 }

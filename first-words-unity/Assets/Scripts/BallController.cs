@@ -19,26 +19,26 @@ public class BallController : MonoBehaviour
 
     private void OnEnable()
     {
-        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Forward, MoveBall);
-        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Back, MoveBall);
-        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Left, MoveBall);
-        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Right, MoveBall);
-        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Jump, MoveBall);
-        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Stop, StopBall);
-        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Reset, ResetBall);
-        SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Fuck, Fuck);
+        SpellEventSubscriber.Instance().SubscribeToSpell(SpellWords.Forward, MoveBall);
+        SpellEventSubscriber.Instance().SubscribeToSpell(SpellWords.Back, MoveBall);
+        SpellEventSubscriber.Instance().SubscribeToSpell(SpellWords.Left, MoveBall);
+        SpellEventSubscriber.Instance().SubscribeToSpell(SpellWords.Right, MoveBall);
+        SpellEventSubscriber.Instance().SubscribeToSpell(SpellWords.Jump, JumpBall);
+        SpellEventSubscriber.Instance().SubscribeToSpell(SpellWords.Stop, StopBall);
+        SpellEventSubscriber.Instance().SubscribeToSpell(SpellWords.Reset, ResetBall);
+        SpellEventSubscriber.Instance().SubscribeToSpell(SpellWords.Fuck, Fuck);
     }
 
     // private void OnDisable()
     // {
-    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Forward, MoveBall);
-    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Back, MoveBall);
-    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Left, MoveBall);
-    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Right, MoveBall);
-    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Jump, MoveBall);
-    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Stop, StopBall);
-    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Reset, ResetBall);
-    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Fuck, Fuck);
+    //     SpellEventSubscriber.Instance().UnsubscribeFromSpell(SpellWords.Forward, MoveBall);
+    //     SpellEventSubscriber.Instance().UnsubscribeFromSpell(SpellWords.Back, MoveBall);
+    //     SpellEventSubscriber.Instance().UnsubscribeFromSpell(SpellWords.Left, MoveBall);
+    //     SpellEventSubscriber.Instance().UnsubscribeFromSpell(SpellWords.Right, MoveBall);
+    //     SpellEventSubscriber.Instance().UnsubscribeFromSpell(SpellWords.Jump, JumpBall);
+    //     SpellEventSubscriber.Instance().UnsubscribeFromSpell(SpellWords.Stop, StopBall);
+    //     SpellEventSubscriber.Instance().UnsubscribeFromSpell(SpellWords.Reset, ResetBall);
+    //     SpellEventSubscriber.Instance().UnsubscribeFromSpell(SpellWords.Fuck, Fuck);
     // }
 
     //REVIEW
@@ -62,6 +62,14 @@ public class BallController : MonoBehaviour
         myRigidbody.AddForce(relativeDirection * myArgs.strength, ForceMode.Impulse);
     }
 
+    private void JumpBall(SpellArgs args)
+    {
+        Spell mySpell = SessionSpellCache.GetSpell(args.spellWord);
+        MoveBallArgs myArgs = mySpell.GetMyArgs<MoveBallArgs>(args);
+
+        myRigidbody.AddForce(myArgs.direction * myArgs.strength, ForceMode.Impulse);
+    }
+
     private void StopBall(SpellArgs args)
     {
         myRigidbody.linearVelocity = Vector3.zero;
@@ -70,6 +78,7 @@ public class BallController : MonoBehaviour
 
     private void ResetBall(SpellArgs args)
     {
+        StopBall(args);
         myRigidbody.MovePosition(startingPos);
     }
 
@@ -77,7 +86,7 @@ public class BallController : MonoBehaviour
     {
         Vector3 direction = new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
         
-        myRigidbody.AddForce(direction * 100f, ForceMode.Impulse);
+        myRigidbody.AddForce(direction * 70f, ForceMode.Impulse);
     }
 
 }
