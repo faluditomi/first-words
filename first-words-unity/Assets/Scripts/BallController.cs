@@ -29,17 +29,17 @@ public class BallController : MonoBehaviour
         SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Fuck, Fuck);
     }
 
-    private void OnDisable()
-    {
-        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Forward, MoveBall);
-        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Back, MoveBall);
-        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Left, MoveBall);
-        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Right, MoveBall);
-        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Jump, MoveBall);
-        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Stop, StopBall);
-        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Reset, ResetBall);
-        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Fuck, Fuck);
-    }
+    // private void OnDisable()
+    // {
+    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Forward, MoveBall);
+    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Back, MoveBall);
+    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Left, MoveBall);
+    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Right, MoveBall);
+    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Jump, MoveBall);
+    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Stop, StopBall);
+    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Reset, ResetBall);
+    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Fuck, Fuck);
+    // }
 
     //REVIEW
     // this might handle Jump in a funky way

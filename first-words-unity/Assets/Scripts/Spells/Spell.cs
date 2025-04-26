@@ -12,7 +12,7 @@ public class Spell : ScriptableObject
     public void Cast()
     {
         SpellArgs args = CreateArgs();
-        Debug.Log($"{spellWord} triggered" + args != null ? $" with args: {args}." : ".");
+        Debug.Log($"{spellWord} triggered.");
         cast?.Invoke(args);
     }
 

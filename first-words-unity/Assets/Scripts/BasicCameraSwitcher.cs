@@ -17,10 +17,10 @@ public class BasicCameraSwitcher : MonoBehaviour
         SpellEventSubscriber.Instance.SubscribeToSpell(SpellWords.Switch_Cam, SwitchToNextCam);
     }
 
-    private void OnDisable()
-    {
-        SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Switch_Cam, SwitchToNextCam);
-    }
+    // private void OnDisable()
+    // {
+    //     SpellEventSubscriber.Instance.UnsubscribeFromSpell(SpellWords.Switch_Cam, SwitchToNextCam);
+    // }
 
     private void SwitchToNextCam(SpellArgs args)
     {

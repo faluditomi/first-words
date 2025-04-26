@@ -27,6 +27,9 @@ public class SpellEventSubscriber : MonoBehaviour
         StartCoroutine(SubscribeToSpellBehaviour(spellWord, action));
     }
 
+    //NOTE
+    // useful if we want to unsubscribe from events, but now we clear the spell cache on scene unload
+    // so we don't need this for now
     public void UnsubscribeFromSpell(SpellWords spellWord, System.Action<SpellArgs> action)
     {
         Spell spell = SessionSpellCache.GetSpell(spellWord);
