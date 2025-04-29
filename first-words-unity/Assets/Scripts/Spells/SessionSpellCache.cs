@@ -39,7 +39,7 @@ public static class SessionSpellCache
         {
             _spells[address] = handle.Result;
             _handles[address] = handle;
-            Debug.Log($"Loaded spell: {address}");
+            // Debug.Log($"Loaded spell: {address}");
             return true;
         }
         else

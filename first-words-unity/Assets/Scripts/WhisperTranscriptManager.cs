@@ -47,6 +47,11 @@ public class WhisperTranscriptManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        if(whisperStream == null)
+        {
+            return;
+        }
+
         whisperStream.OnResultUpdated -= OnResult;
         whisperStream.OnSegmentUpdated -= OnSegmentUpdated;
         whisperStream.OnSegmentFinished -= OnSegmentFinished;
@@ -70,14 +75,14 @@ public class WhisperTranscriptManager : MonoBehaviour
     //it is recognised in the update, and cast it for real when it appears in the finished segment
     private void OnSegmentUpdated(WhisperResult segment)
     {
-        Debug.Log($"Segment updated: {segment.Result}");
+        // Debug.Log($"Segment updated: {segment.Result}");
         SpellRecognitionManager._instance.ScanSegment(segment.Result);
         
     }
 
     private void OnSegmentFinished(WhisperResult segment)
     {
-        Debug.Log($"Segment finished: {segment.Result}");
+        // Debug.Log($"Segment finished: {segment.Result}");
         SpellRecognitionManager._instance.ResetSegmentation();
     }
 
