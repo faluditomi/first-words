@@ -571,51 +571,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448186991}
   m_CullTransparentMesh: 1
---- !u!1 &526083733
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 526083734}
-  - component: {fileID: 526083736}
-  m_Layer: 0
-  m_Name: Spell Recognition Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &526083734
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526083733}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &526083736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526083733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7d6ef93c8cb2ec4892959b6c406da97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeSpells: 000000000100000002000000030000000400000005000000060000000700000008000000
 --- !u!1 &562431923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,7 +2359,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 839632611}
   m_HandleRect: {fileID: 839632610}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2772,120 +2727,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672973270}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1701347196
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1701347200}
-  - component: {fileID: 1701347199}
-  - component: {fileID: 1701347198}
-  - component: {fileID: 1701347197}
-  m_Layer: 0
-  m_Name: Whisper Transcript Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1701347197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701347196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a9e5eb7b6f10c46ba8c3d489b8a3a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transcriptionTextUI: {fileID: 1482910941}
-  TranscriptionWindowScrollUI: {fileID: 1500538921}
---- !u!114 &1701347198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701347196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bc03a4c19604ea394e364f8fc632928, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxLengthSec: 60
-  loop: 1
-  frequency: 16000
-  chunksLengthSec: 0.5
-  echo: 0
-  useVad: 1
-  vadUpdateRateSec: 0.1
-  vadContextSec: 30
-  vadLastSec: 1.25
-  vadThd: 1
-  vadFreqThd: 100
-  vadIndicatorImage: {fileID: 448186993}
-  vadStop: 0
-  dropVadPart: 1
-  vadStopTime: 2
-  microphoneDropdown: {fileID: 2100209877}
-  microphoneDefaultLabel: Default Mic
---- !u!114 &1701347199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701347196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9370225a2ca94276b870d5f87b0db55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logLevel: 1
-  modelPath: ggml-tiny.en.bin
-  isModelPathInStreamingAssets: 1
-  initOnAwake: 1
-  useGpu: 0
-  flashAttention: 0
-  language: en
-  translateToEnglish: 0
-  strategy: 0
-  noContext: 1
-  singleSegment: 1
-  enableTokens: 0
-  initialPrompt: 'The player is using voice commands in a video game to control a
-    character. Recognize short commands like: forward, back, left, right, jump, stop,
-    switch cam, reset, and the word fuck. These commands may be spoken quickly, with
-    background noise, different accents, or poor microphone quality. Recognize the
-    commands exactly.'
-  stepSec: 0.2
-  keepSec: 0.2
-  lengthSec: 3
-  updatePrompt: 0
-  dropOldBuffer: 0
-  useVad: 1
-  tokensTimestamps: 0
-  audioCtx: 0
---- !u!4 &1701347200
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701347196}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1764155452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3970,12 +3811,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100209875}
   m_CullTransparentMesh: 1
+--- !u!1001 &819592953237460108
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1696658339780795916, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696658339780795916, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696658339780795916, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696658339780795916, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696658339780795916, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696658339780795916, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696658339780795916, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696658339780795916, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696658339780795916, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696658339780795916, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446157328839324653, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: vadIndicatorImage
+      value: 
+      objectReference: {fileID: 448186993}
+    - target: {fileID: 2446157328839324653, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: microphoneDropdown
+      value: 
+      objectReference: {fileID: 2100209877}
+    - target: {fileID: 2833552254007035745, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: transcriptionTextUI
+      value: 
+      objectReference: {fileID: 1482910941}
+    - target: {fileID: 2833552254007035745, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: TranscriptionWindowScrollUI
+      value: 
+      objectReference: {fileID: 1500538921}
+    - target: {fileID: 5186646291192119971, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: m_Name
+      value: Whisper Transcript Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+--- !u!1001 &1342564326165632582
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 302639441178418399, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
+      propertyPath: m_Name
+      value: Spell Recognition Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021140145175722540, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021140145175722540, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021140145175722540, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021140145175722540, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021140145175722540, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021140145175722540, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021140145175722540, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021140145175722540, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021140145175722540, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021140145175722540, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1701347200}
-  - {fileID: 526083734}
+  - {fileID: 819592953237460108}
+  - {fileID: 1342564326165632582}
   - {fileID: 990994213}
   - {fileID: 959927933}
   - {fileID: 2015438459}
