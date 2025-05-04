@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
-/*  <summary>  
-    this is a utility class that centralises the responsibility of subscribing to spell events 
-    but only once the spell cache has been populated.
-    </summary> */
+/// <summary>
+/// Utility class that centralises the responsibility of subscribing to spell events,
+/// but only once the spell cache has been populated.
+/// </summary>
 public class SpellEventSubscriber : MonoBehaviour
 {
 
@@ -23,14 +22,21 @@ public class SpellEventSubscriber : MonoBehaviour
         return _instance;
     }
 
+    /// <summary>
+    /// Called from other classes that want to subscribe to spell events.
+    /// </summary>
+    /// <param name="spellWord"> The spell we want to listen to. </param>
+    /// <param name="action"> The callback we want to subscribe with. </param>
     public void SubscribeToSpell(SpellWords spellWord, System.Action<SpellArgs> action)
     {
         StartCoroutine(SubscribeToSpellBehaviour(spellWord, action));
     }
 
-    //NOTE
-    // useful if we want to unsubscribe from events, but now we clear the spell cache on scene unload
-    // so we don't need this for now
+    /// <summary>
+    /// Unsubscribes from a spell event. Useful in case the active spells change during the session.
+    /// </summary>
+    /// <param name="spellWord"> The spell we want to stop listening to. </param>
+    /// <param name="action"> The callback that's been listening to the event. </param>
     public void UnsubscribeFromSpell(SpellWords spellWord, System.Action<SpellArgs> action)
     {
         Spell spell = SessionSpellCache.GetSpell(spellWord);
@@ -45,6 +51,9 @@ public class SpellEventSubscriber : MonoBehaviour
         Debug.Log($"Unsubscribed from {spellWord} spell event.");
     }
 
+    /// <summary>
+    /// The main functionality of this utility class. It makes sure that the spell cache is ready before subscribing to the spell event.
+    /// </summary>
     private IEnumerator SubscribeToSpellBehaviour(SpellWords spellWord, System.Action<SpellArgs> action)
     {
         yield return new WaitUntil(() => SessionSpellCache.IsSpellCacheReady());

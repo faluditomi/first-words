@@ -41,12 +41,9 @@ public class BallController : MonoBehaviour
     //     SpellEventSubscriber.Instance().UnsubscribeFromSpell(SpellWords.Fuck, Fuck);
     // }
 
-    //REVIEW
-    // this might handle Jump in a funky way
     private void MoveBall(SpellArgs args)
     {
-        Spell mySpell = SessionSpellCache.GetSpell(args.spellWord);
-        MoveBallArgs myArgs = mySpell.GetMyArgs<MoveBallArgs>(args);
+        MoveBallArgs myArgs = SessionSpellCache.GetSpellArgs<MoveBallArgs>(args);
 
         Vector3 camForward = camTransform.forward;
         Vector3 camRight = camTransform.right;
@@ -64,8 +61,7 @@ public class BallController : MonoBehaviour
 
     private void JumpBall(SpellArgs args)
     {
-        Spell mySpell = SessionSpellCache.GetSpell(args.spellWord);
-        MoveBallArgs myArgs = mySpell.GetMyArgs<MoveBallArgs>(args);
+        MoveBallArgs myArgs = SessionSpellCache.GetSpellArgs<MoveBallArgs>(args);
 
         myRigidbody.AddForce(myArgs.direction * myArgs.strength, ForceMode.Impulse);
     }

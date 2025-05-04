@@ -6,16 +6,22 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
+/// <summary>
+/// This class takes the Whisper transcripts from the WhisperTranscriptManager and takes care of recognising spell words within it.
+/// </summary>
 public class SpellRecognitionManager : MonoBehaviour
 {
 
+    #region Fields
     public static SpellRecognitionManager _instance { get; private set; }
     
     [SerializeField] private List<SpellWords> activeSpells;
     private ConcurrentBag<SpellWords> spellsInCurrentSegment = new();
     private CancellationTokenSource cancellationTokenSource;
     private Dictionary<SpellWords, string> spellWordCache;
+    #endregion
 
+    #region Unity Methods
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -37,7 +43,15 @@ public class SpellRecognitionManager : MonoBehaviour
     {
         SessionSpellCache.UnloadAll();
     }
+    #endregion
 
+    #region General Methods
+    /// <summary>
+    /// Takes a trascript segment and begins the spell recognition process in a parallelised manner. It also creates 
+    /// a cancellation token, such that when a new segment comes in, the previous scanning tasks can be cancelled, thus
+    /// preventing inconsistencies between the spells already scanned and the contents of the spellsInCurrentSegment bag.
+    /// </summary>
+    /// <param name="segment"> The text to be scanned for spell words. </param>
     public void ScanSegment(string segment)
     {
         cancellationTokenSource?.Cancel();
@@ -48,7 +62,7 @@ public class SpellRecognitionManager : MonoBehaviour
 
         try
         {
-            Parallel.ForEach(activeSpells, new ParallelOptions { CancellationToken = token }, spellWord =>
+            Parallel.ForEach(activeSpells, new ParallelOptions{ CancellationToken = token }, spellWord =>
             {
                 CheckForSpell(segment, spellWord, token);
             });
@@ -59,24 +73,38 @@ public class SpellRecognitionManager : MonoBehaviour
         }
     }
 
-    //TODO
-    // check if the spellWord is of type "i need context from speech" and pass that context along somehow
+    /// <summary>
+    /// Takes a specific spell word and checks whether the transcript segment contains it. If it does, it will cast the spell.
+    /// It will also add the spell to the spellsInCurrentSegment bag and remove the spell word and the precefing text from
+    /// the segment, such that that spell won't be activated again the next time this segment is scanned.
+    /// </summary>
+    /// <param name="segment"> The transcript to be scanned. </param>
+    /// <param name="spellWord"> The spell word we are scanning for. </param>
+    /// <param name="token"> The token that can potentially halt the scanning process. </param>
     private void CheckForSpell(string segment, SpellWords spellWord, CancellationToken token)
     {
         while(!token.IsCancellationRequested && ContainsSpellStringUtil(segment, spellWord))
         {
             spellsInCurrentSegment.Add(spellWord);
             SessionSpellCache.CastSpell(spellWord);
-            // segment = RemoveSpellStringUtil(segment, spellWord);
             segment = RemoveSpellAndBeforeUtil(segment, spellWord);
         }
 
+        //NOTE: if this log ever appears, we have to restructure how spells are checked for, to make sure that all uttered spells are registered
+        //      and that the segment is not empty when we check for the next spell
         if(token.IsCancellationRequested)
         {
             Debug.LogError($"CheckForSpell was canceled for segment: {segment}");
         }
     }
 
+    /// <summary>
+    /// The same segment is scanned multiple times, since the scanning process is activated OnSegmentUpdated and not 
+    /// OnSegmentFinished (WhisperTranscriptManager), thus, when the same segment comes in for the Nth time, we remove
+    /// the spell words from it that we have already scanned in a previous round of scans.
+    /// </summary>
+    /// <param name="segment"> The transcript to be manipulated. </param>
+    /// <returns> Returns the segment without the spell words in spellsInCurrentSegment. </returns>
     private string RemoveRegisteredSpells(string segment)
     {
         if(spellsInCurrentSegment.Count > 0)
@@ -97,28 +125,34 @@ public class SpellRecognitionManager : MonoBehaviour
         return segment;
     }
 
+    /// <summary>
+    /// This method is called OnSegmentFinished (WhisperTranscriptManager) when we want to clear the spellsInCurrentSegment
+    /// and cancel the scanning processes that still may be running.
+    /// </summary>
     public void ResetSegmentation()
     {
         if (cancellationTokenSource != null)
         {
-            cancellationTokenSource.Cancel(); // Cancel all running tasks
+            cancellationTokenSource.Cancel();
             Debug.Log($"ResetSegmentation: Canceled running tasks.");
         }
 
-        //TODO
-        // maybe make the checks into a coroutine, so we can stop them here
-        // (so it doesn't try to match spells with an empty spellsInCurrentSegment)
-        // (or maybe instead of having a global variable, pass the spell list around as a parameter)
         spellsInCurrentSegment = new ConcurrentBag<SpellWords>();
     }
+    #endregion
 
-    //NOTE
-    // these util methods could go in a separate SpellWordUtil class if they are ever to be used in other scripts
+    #region Utility Methods
+    /// <summary>
+    /// Checks whether the context contains the spell word.
+    /// </summary>
     private bool ContainsSpellStringUtil(string context, SpellWords spellToCheck)
     {
         return context.ToLower().Contains(spellWordCache[spellToCheck]);
     }
 
+    /// <summary>
+    /// Removes one instance of the spell word from the context.
+    /// </summary>
     private string RemoveSpellStringUtil(string context, SpellWords spellToRemove)
     {
         string spellWordToRemove = spellWordCache[spellToRemove];
@@ -126,6 +160,9 @@ public class SpellRecognitionManager : MonoBehaviour
         return index != -1 ? context.Remove(index, spellWordToRemove.Length).Trim() : context;
     }
 
+    /// <summary>
+    /// Removes the first instance of the spell word and everything before it from the context.
+    /// </summary>
     private string RemoveSpellAndBeforeUtil(string context, SpellWords spellToRemove)
     {
         string spellWordToRemove = spellWordCache[spellToRemove];
@@ -133,9 +170,14 @@ public class SpellRecognitionManager : MonoBehaviour
         return index != -1 ? context.Substring(index + spellWordToRemove.Length).Trim() : context;
     }
 
+    /// <summary>
+    /// Takes the SpellWords enum and converts it to a string that looks the same as it would appear in the transcript.
+    /// It is used to create the spellWordCache dictionary upon initialisation so this method is only called once per spell.
+    /// </summary>
     private string SpellEnumToStringUtil(SpellWords spellWord)
     {
         return spellWord.ToString().ToLower().Replace("_", " ");
     }
+    #endregion
 
 }

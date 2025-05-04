@@ -2,14 +2,15 @@ using System;
 using System.Collections.Concurrent;
 using UnityEngine;
 
+/// <summary>
+/// Used to route processing back to the main thread from sub-threads, in case something can only be called from the main thread for example.
+/// </summary>
 public class UnityMainThreadDispatcher : MonoBehaviour
 {
 
     private static UnityMainThreadDispatcher _instance;
     private static readonly ConcurrentQueue<Action> _executionQueue = new();
 
-    //NOTE
-    // this singleton template is great for scripts that we want to persist across scenes
     public static UnityMainThreadDispatcher Instance()
     {
         if(_instance == null)
@@ -22,18 +23,26 @@ public class UnityMainThreadDispatcher : MonoBehaviour
         return _instance;
     }
 
-    public void Enqueue(Action action)
-    {
-        if(action == null) throw new ArgumentNullException(nameof(action));
-        _executionQueue.Enqueue(action);
-    }
-
     private void Update()
     {
         while(_executionQueue.TryDequeue(out var action))
         {
             action.Invoke();
         }
+    }
+
+    /// <summary>
+    /// Used to delegate computation to the main thread.
+    /// </summary>
+    /// <param name="action"> The code that should be run on the main thread. </param>
+    public void Enqueue(Action action)
+    {
+        if(action == null)
+        {
+            throw new ArgumentNullException(nameof(action));
+        }
+
+        _executionQueue.Enqueue(action);
     }
 
 }
