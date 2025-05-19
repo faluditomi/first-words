@@ -1,4 +1,6 @@
 using System;
+using Unity.Collections;
+using Unity.Entities;
 using UnityEngine;
 
 /// <summary>
@@ -81,6 +83,33 @@ public class SpellArgs
 {
 
     public SpellWords spellWord;
+    //TODO: implement consequence for cooldownDuration
     public float cooldownDuration;
+
+}
+
+/// <summary>
+/// Used by ECS Systems to get notified when a spell is casted. Since Unity events are not Burst compatible, instead of subscribing
+/// to the cast event, the Systems receive a SpellListenerTag entity with a list of Spells they need to keep track of.
+/// (See usage exampe in ExampleSpellAuthoring and ExampleSpellSystem)
+/// </summary>
+public struct SpellListenerTag : IComponentData
+{
+
+    public FixedList32Bytes<SpellWords> listeningSpells;
+
+}
+
+/// <summary>
+/// Used by Systems as a Burst friendly substitute for the cast events. These elements are created and placed in a queue, which the
+/// Systems then loop through and find relevant calls to action. Once all Systems executed and processed an element, the
+/// SpellEventCleanupManager runs at the end of the frame and clears these queues.
+/// (See usage example in ExampleSpellSystem and SpellEventManager)
+/// </summary>
+public struct SpellCastBufferElement : IBufferElementData
+{
+
+    public SpellWords spellWord;
+    public FixedBytes126 payload;
 
 }

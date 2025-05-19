@@ -8,7 +8,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 /// A bridge between the SpellWords enum, the Addressables system, and the Spell class. It loads, unloads, manages the spell cache
 /// and provides a centralised way to cast them. 
 /// </summary>
-public static class SessionSpellCache
+public static class SpellSessionCache
 {
 
     private static Dictionary<string, Spell> _spells = new();
@@ -50,7 +50,7 @@ public static class SessionSpellCache
         {
             _spells[address] = handle.Result;
             _handles[address] = handle;
-            // Debug.Log($"Loaded spell: {address}");
+            Debug.Log($"Loaded spell: {address}");
             return true;
         }
         else
@@ -58,16 +58,6 @@ public static class SessionSpellCache
             Debug.LogError($"Failed to load spell: {address}");
             return false;
         }
-    }
-
-    /// <summary>
-    /// Finds a spell in the cache and delegates its casting to the main thread.
-    /// </summary>
-    /// <param name="spellWord"> The SpellWord/Spell we want to cast. </param>
-    public static void CastSpell(SpellWords spellWord)
-    {
-        var spell = GetSpell(spellWord);
-        UnityMainThreadDispatcher.Instance().Enqueue(() => spell?.Cast());
     }
 
     /// <summary>

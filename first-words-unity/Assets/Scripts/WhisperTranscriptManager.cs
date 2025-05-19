@@ -44,14 +44,16 @@ public class WhisperTranscriptManager : MonoBehaviour
     private async void Start()
     {
         whisperStream = await whisperManager.CreateStream(microphoneRecord);
-        
+
         whisperStream.OnResultUpdated += OnResult;
         whisperStream.OnSegmentUpdated += OnSegmentUpdated;
         whisperStream.OnSegmentFinished += OnSegmentFinished;
         // whisperStream.OnStreamFinished += OnFinished;
-        
+
         microphoneRecord.StartRecord();
         whisperStream.StartStream();
+
+        Debug.Log("Whisper initialised successfully");
     }
 
     /// <summary>

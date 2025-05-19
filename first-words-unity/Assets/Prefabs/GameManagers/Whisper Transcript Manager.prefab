@@ -59,10 +59,9 @@ MonoBehaviour:
   singleSegment: 1
   enableTokens: 0
   initialPrompt: 'The player is using voice commands in a video game to control a
-    character. Recognize short commands like: forward, back, left, right, jump, stop,
-    switch cam, reset, and the word fuck. These commands may be spoken quickly, with
-    background noise, different accents, or poor microphone quality. Recognize the
-    commands exactly.'
+    character. Recognize short commands like: levitate. These commands may be spoken
+    quickly, with background noise, different accents, or poor microphone quality.
+    Recognize the commands exactly.'
   stepSec: 0.2
   keepSec: 0.2
   lengthSec: 3

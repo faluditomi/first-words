@@ -43,7 +43,7 @@ public class BallController : MonoBehaviour
 
     private void MoveBall(SpellArgs args)
     {
-        MoveBallArgs myArgs = SessionSpellCache.GetSpellArgs<MoveBallArgs>(args);
+        MoveBallArgs myArgs = SpellSessionCache.GetSpellArgs<MoveBallArgs>(args);
 
         Vector3 camForward = camTransform.forward;
         Vector3 camRight = camTransform.right;
@@ -61,7 +61,7 @@ public class BallController : MonoBehaviour
 
     private void JumpBall(SpellArgs args)
     {
-        MoveBallArgs myArgs = SessionSpellCache.GetSpellArgs<MoveBallArgs>(args);
+        MoveBallArgs myArgs = SpellSessionCache.GetSpellArgs<MoveBallArgs>(args);
 
         myRigidbody.AddForce(myArgs.direction * myArgs.strength, ForceMode.Impulse);
     }

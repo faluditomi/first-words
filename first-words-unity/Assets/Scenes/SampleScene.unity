@@ -1564,6 +1564,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2446157328839324653, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: vadIndicatorImage
+      value: 
+      objectReference: {fileID: 351915758}
+    - target: {fileID: 2446157328839324653, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: microphoneDropdown
+      value: 
+      objectReference: {fileID: 1896826129}
+    - target: {fileID: 2833552254007035745, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: transcriptionTextUI
+      value: 
+      objectReference: {fileID: 21089609}
+    - target: {fileID: 2833552254007035745, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
+      propertyPath: TranscriptionWindowScrollUI
+      value: 
+      objectReference: {fileID: 789276093}
     - target: {fileID: 5186646291192119971, guid: f0d9aa210ed8143429f4e2d83d24f866, type: 3}
       propertyPath: m_Name
       value: Whisper Transcript Manager
@@ -1993,7 +2009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7142649178838000013, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
       propertyPath: activeSpells.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9021140145175722540, guid: 8c77d4508f5010f4dac7aee1b00c0d7d, type: 3}
       propertyPath: m_LocalPosition.x

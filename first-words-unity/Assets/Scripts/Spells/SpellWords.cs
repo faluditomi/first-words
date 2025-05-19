@@ -4,7 +4,9 @@
 /// </summary>
 public enum SpellWords
 {
-    
+
+    Levitate,
+
     #region Whisper Performance Test Spells
     Forward,
     Back,
@@ -14,7 +16,12 @@ public enum SpellWords
     Stop,
     Switch_Cam,
     Reset,
-    Fuck
+    Fuck,
+    #endregion
+
+    #region Example Spells
+    Example_One,
+    Example_Two
     #endregion
 
 }
