@@ -7,7 +7,6 @@ using Unity.Entities;
 /// </summary>
 [BurstCompile]
 [UpdateInGroup(typeof(SimulationSystemGroup))]
-[UpdateBefore(typeof(SpellEventCleanupManager))]
 public partial struct ExampleSpellSystem : ISystem
 {
     private bool isInitialised;

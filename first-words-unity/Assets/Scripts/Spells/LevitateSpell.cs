@@ -7,10 +7,6 @@ public class LevitateSpell : Spell
     
     [Min(0f), Tooltip("If the distance between the player and a levitateable object is less then this, it can be interacted with.")]
     public float range;
-    [Min(0f), Tooltip("The speed at which the objects fly from their spot to the gathering point in front of the player.")]
-    public float gatherSpeed;
-    [Min(0f), Tooltip("The intensity with which the levitating objects are moving around while at the gathering point.")]
-    public float jitterIntensity;
 
     //TODO: document this also (kinda not needed, only when the spell has an IBufferElementData)
     static LevitateSpell()
@@ -20,9 +16,7 @@ public class LevitateSpell : Spell
             LevitateSpell levitateSpell = (LevitateSpell) spell;
             LevitateBufferPayload bufferElement = new LevitateBufferPayload
             {
-                range = levitateSpell.range,
-                gatherSpeed = levitateSpell.gatherSpeed,
-                jitterIntensity = levitateSpell.jitterIntensity
+                range = levitateSpell.range
             };
 
             return SpellSerializationRegistry.SerializeStruct(bufferElement);
@@ -33,9 +27,7 @@ public class LevitateSpell : Spell
     {
         LevitateArgs myArgs = new LevitateArgs
         {
-            range = this.range,
-            gatherSpeed = this.gatherSpeed,
-            jitterIntensity = this.jitterIntensity
+            range = this.range
         };
 
         return CopyTo(myArgs);
@@ -48,8 +40,6 @@ public class LevitateArgs : SpellArgs
 {
 
     public float range;
-    public float gatherSpeed;
-    public float jitterIntensity;
     //TODO: add highlight particles here?
 
 }
@@ -58,7 +48,5 @@ public struct LevitateBufferPayload : IBufferElementData
 {
     
     public float range;
-    public float gatherSpeed;
-    public float jitterIntensity;
 
 }

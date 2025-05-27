@@ -1860,6 +1860,8 @@ GameObject:
   - component: {fileID: 189433864}
   - component: {fileID: 189433863}
   - component: {fileID: 189433862}
+  - component: {fileID: 189433866}
+  - component: {fileID: 189433867}
   m_Layer: 0
   m_Name: Pebble
   m_TagString: Untagged
@@ -1894,8 +1896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e52d1f6aa077d41a013f53fab70108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gatherSpeed: 10
   jitterIntensity: 1
-  scaleDifferencePercentageWindow: 0.5
+  gatheredDistance: 3
 --- !u!65 &189433863
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1970,6 +1973,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189433860}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &189433866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189433860}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08b85025cfd21949a9f137911864d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &189433867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189433860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e378d96ad06d73438d555bdb26554ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleDifferencePercentageWindow: 50
 --- !u!1 &207469628
 GameObject:
   m_ObjectHideFlags: 0
@@ -5908,6 +5936,8 @@ GameObject:
   - component: {fileID: 634105166}
   - component: {fileID: 634105165}
   - component: {fileID: 634105164}
+  - component: {fileID: 634105168}
+  - component: {fileID: 634105169}
   m_Layer: 0
   m_Name: Pebble (4)
   m_TagString: Untagged
@@ -5942,8 +5972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e52d1f6aa077d41a013f53fab70108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gatherSpeed: 10
   jitterIntensity: 1
-  scaleDifferencePercentageWindow: 0.5
+  gatheredDistance: 3
 --- !u!65 &634105165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6018,6 +6049,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634105162}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &634105168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634105162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08b85025cfd21949a9f137911864d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &634105169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634105162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e378d96ad06d73438d555bdb26554ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleDifferencePercentageWindow: 50
 --- !u!1 &665408748
 GameObject:
   m_ObjectHideFlags: 0
@@ -6463,6 +6519,8 @@ GameObject:
   - component: {fileID: 670125338}
   - component: {fileID: 670125337}
   - component: {fileID: 670125336}
+  - component: {fileID: 670125340}
+  - component: {fileID: 670125341}
   m_Layer: 0
   m_Name: Pebble (2)
   m_TagString: Untagged
@@ -6497,8 +6555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e52d1f6aa077d41a013f53fab70108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gatherSpeed: 10
   jitterIntensity: 1
-  scaleDifferencePercentageWindow: 0.5
+  gatheredDistance: 3
 --- !u!65 &670125337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6573,6 +6632,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670125334}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &670125340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670125334}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08b85025cfd21949a9f137911864d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &670125341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670125334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e378d96ad06d73438d555bdb26554ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleDifferencePercentageWindow: 50
 --- !u!1 &711386902
 GameObject:
   m_ObjectHideFlags: 0
@@ -8422,6 +8506,8 @@ GameObject:
   - component: {fileID: 880029077}
   - component: {fileID: 880029076}
   - component: {fileID: 880029075}
+  - component: {fileID: 880029079}
+  - component: {fileID: 880029080}
   m_Layer: 0
   m_Name: Pebble (3)
   m_TagString: Untagged
@@ -8456,8 +8542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e52d1f6aa077d41a013f53fab70108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gatherSpeed: 10
   jitterIntensity: 1
-  scaleDifferencePercentageWindow: 0.5
+  gatheredDistance: 3
 --- !u!65 &880029076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8532,6 +8619,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880029073}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &880029079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880029073}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08b85025cfd21949a9f137911864d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &880029080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880029073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e378d96ad06d73438d555bdb26554ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleDifferencePercentageWindow: 50
 --- !u!1 &898484632
 GameObject:
   m_ObjectHideFlags: 0
@@ -19566,6 +19678,8 @@ GameObject:
   - component: {fileID: 1939069637}
   - component: {fileID: 1939069636}
   - component: {fileID: 1939069635}
+  - component: {fileID: 1939069639}
+  - component: {fileID: 1939069640}
   m_Layer: 0
   m_Name: Pebble (1)
   m_TagString: Untagged
@@ -19600,8 +19714,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e52d1f6aa077d41a013f53fab70108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gatherSpeed: 10
   jitterIntensity: 1
-  scaleDifferencePercentageWindow: 0.5
+  gatheredDistance: 3
 --- !u!65 &1939069636
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19676,6 +19791,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939069633}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1939069639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939069633}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08b85025cfd21949a9f137911864d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1939069640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939069633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e378d96ad06d73438d555bdb26554ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleDifferencePercentageWindow: 50
 --- !u!1 &1946732713
 GameObject:
   m_ObjectHideFlags: 0
