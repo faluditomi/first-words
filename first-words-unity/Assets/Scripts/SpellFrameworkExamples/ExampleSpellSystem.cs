@@ -9,6 +9,7 @@ using Unity.Entities;
 [UpdateInGroup(typeof(SimulationSystemGroup))]
 public partial struct ExampleSpellSystem : ISystem
 {
+    
     private bool isInitialised;
     
     /// <summary>

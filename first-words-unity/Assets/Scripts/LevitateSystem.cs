@@ -23,7 +23,6 @@ public partial struct PebbleSystem : ISystem
         LevitateBehaviour(ref state);
     }
 
-    //REVIEW: can we delegate someof this to a generalised util class/method somewhere? (Maybe in the BurstSystemUtility? - Rename that to BurstSystemSpellUtility?)
     private void SpellCastListener(ref SystemState state)
     {
         foreach(DynamicBuffer<SpellCastBufferElement> spellCastEventBuffer
