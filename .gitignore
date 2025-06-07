@@ -1,86 +1,122 @@
-# Unity-related files
-[Aa]ssets/AssetStoreTools*
-[Bb]uild/
-[Ll]ibrary/
-[Ll]ocal[Cc]ache/
-[Oo]bj/
-[Tt]emp/
-[Uu]nityGenerated/
+#############
+# Unity Core
+#############
+first-words-unity/[Ll]ibrary/
+first-words-unity/[Tt]emp/
+first-words-unity/[Oo]bj/
+first-words-unity/[Bb]uild/
+first-words-unity/[Bb]uilds/
+first-words-unity/[Ll]ogs/
+first-words-unity/[Mm]emoryCaptures/
+first-words-unity/[Uu]nityGenerated/
+first-words-unity/[Uu]serSettings/
 
-# file on crash reports
-sysinfo.txt
+# Cache and auto-generated data
+first-words-unity/[Ll]ocal[Cc]ache/
+first-words-unity/[Aa]ssets/AssetStoreTools*
 
-# Unity3D generated meta files
-*.pidb.meta
+# DOTS/Entities
+first-words-unity/*.asmdef.cache
+first-words-unity/*.entitiesjournal
 
-# Unity crash reports
-*.stacktrace
+# Addressables
+first-words-unity/[Aa]ssets/AddressableAssetsData/*.bin*
+first-words-unity/[Aa]ssets/AddressableAssetsData/*.link*
+first-words-unity/[Aa]ssets/AddressableAssetsData/*.hash
+first-words-unity/[Aa]ssets/AddressableAssetsData/*/catalog.json
+first-words-unity/[Aa]ssets/AddressableAssetsData/*/catalog.hash
+first-words-unity/[Aa]ssets/AddressableAssetsData/*/*.bundle
+first-words-unity/[Aa]ssets/AddressableAssetsData/*/*.bundle.manifest
 
-# User-specific files
-.vscode/
-.idea/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
+#############
+# FMOD
+#############
+# FMOD banks and cache
+first-words-unity/[Aa]ssets/StreamingAssets/*.bank
+first-words-unity/[Aa]ssets/StreamingAssets/*.strings.bank
+first-words-unity/[Aa]ssets/Plugins/FMOD/lib/*
+first-words-unity/[Aa]ssets/Plugins/FMOD/Cache/
+first-words-unity/[Aa]ssets/Plugins/FMOD/Cache.meta
 
-# macOS specific files
+#############
+# IDEs & Tools
+#############
+# VS Code
+first-words-unity/.vscode/
+
+# JetBrains / Rider / IntelliJ
+first-words-unity/.idea/
+first-words-unity/*.sln.iml
+
+# Visual Studio
+first-words-unity/*.csproj
+first-words-unity/*.unityproj
+first-words-unity/*.sln
+first-words-unity/*.suo
+first-words-unity/*.tmp
+first-words-unity/*.user
+first-words-unity/*.userprefs
+first-words-unity/*.pidb
+first-words-unity/*.booproj
+first-words-unity/*.svd
+first-words-unity/*.pdb
+first-words-unity/*.opendb
+first-words-unity/*.VC.db
+
+#############
+# OS Generated
+#############
+# macOS
 .DS_Store
-*.AppleDouble
-*.LSOverride
+.AppleDouble
+.LSOverride
 
-# Windows specific files
+# Windows
 Thumbs.db
 ehthumbs.db
+Desktop.ini
 
-# Linux specific files
+# Linux
 .directory
 
-# Python environment
-*.pyc
-*.pyo
-*.pyd
-__pycache__/
-*.pdb
-*.env
-*.egg
-*.egg-info
-dist/
-build/
+#############
+# Crash & Logs
+#############
+first-words-unity/sysinfo.txt
+first-words-unity/*.stacktrace
 
-# Package distribution
-*.tar.gz
+#############
+# Others (optional)
+#############
+# Unity Collab
+first-words-unity/.collab/
+
+# Plastic SCM (if used)
+first-words-unity/.PlasticSCM/
+
+# Ignore any log or backup files
+*.log
+*.bak
+*.backup
+
+# Node modules (if you use npm/yarn for tooling)
+first-words-unity/node_modules/
+
+# Python (if used)
+__pycache__/
+*.py[cod]
+*.env
+*.venv
+.env/
+.venv/
+
+# Package artifacts
 *.zip
+*.tar.gz
+*.rar
+*.7z
+*.gz
 *.whl
 
-
-###
-# VS/MD solution and project files
-###
-[Ee]xportedObj/
-*.booproj
-*.csproj
-*.sln
-*.suo
-*.svd
-*.unityproj
-*.user
-*.userprefs
-*.pidb
-.DS_Store
-
-###
-# OS generated
-###
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-Icon?
-ehthumbs.db
-Thumbs.db
-
-# Exclude virtual environments
-whisper-live/myenv/
-whisper-live/whisper-env/*
+# Git LFS: don't ignore large binary assets managed by LFS
+# (Make sure to set patterns in .gitattributes instead)
