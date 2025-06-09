@@ -43,7 +43,7 @@ public class LevitateAuthoring : MonoBehaviour
 
 public struct LevitateData : IComponentData
 {
-    
+
     public float gatherSpeed;
     public float gatheredDistance;
     public float jitterIntensity;

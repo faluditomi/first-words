@@ -6,6 +6,7 @@ public enum SpellWords
 {
 
     Levitate,
+    Shoot,
 
     #region Whisper Performance Test Spells
     Forward,

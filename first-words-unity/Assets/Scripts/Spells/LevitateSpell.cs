@@ -8,7 +8,7 @@ public class LevitateSpell : Spell
     [Min(0f), Tooltip("If the distance between the player and a levitateable object is less then this, it can be interacted with.")]
     public float range;
 
-    //TODO: document this also (kinda not needed, only when the spell has an IBufferElementData)
+    //TODO: document this in Spell (kinda not needed, only when the spell has an IBufferElementData)
     static LevitateSpell()
     {
         SpellSerializationRegistry.Register(SpellWords.Levitate, spell =>
@@ -25,22 +25,17 @@ public class LevitateSpell : Spell
 
     protected override SpellArgs CreateArgs()
     {
-        LevitateArgs myArgs = new LevitateArgs
-        {
-            range = this.range
-        };
+        LevitateArgs myArgs = new LevitateArgs{};
 
         return CopyTo(myArgs);
     }
 
 }
 
-//REVIEW: this might be useless if the levitateables are using only a system
 public class LevitateArgs : SpellArgs
 {
 
-    public float range;
-    //TODO: add highlight particles here?
+    //TODO: add highlight particles here? ( spell visuals, particle effects )
 
 }
 

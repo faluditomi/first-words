@@ -12,7 +12,6 @@ public partial struct PebbleSystem : ISystem
 
     public void OnCreate(ref SystemState state)
     {
-        //Make sure the system doesn't run unless there is at least one pebble in the world
         //TODO: should probably beef up this check and look for more components
         state.RequireForUpdate<LevitateData>();
     }
@@ -31,7 +30,7 @@ public partial struct PebbleSystem : ISystem
             foreach(SpellCastBufferElement spellCast in spellCastEventBuffer)
             {
                 foreach(
-                    (RefRO<SpellListenerTag> SpellListenerTag,
+                    (RefRO<SpellListenerTag> spellListenerTag,
                     RefRO<LevitateData> levitateData,
                     RefRW<LocalTransform> localTransform,
                     Entity entity)
@@ -39,10 +38,10 @@ public partial struct PebbleSystem : ISystem
                     RefRO<SpellListenerTag>,
                     RefRO<LevitateData>,
                     RefRW<LocalTransform>>()
-                    .WithAbsent<ShootingTag>()
+                    .WithNone<ShootingTag>()
                     .WithEntityAccess())
                 {
-                    if(!BurstSystemUtils.ContainsSpell(SpellListenerTag.ValueRO.listeningSpells, spellCast.spellWord))
+                    if(!BurstSystemUtils.ContainsSpell(spellListenerTag.ValueRO.listeningSpells, spellCast.spellWord))
                     {
                         continue;
                     }
@@ -71,11 +70,6 @@ public partial struct PebbleSystem : ISystem
         {
             state.EntityManager.AddComponent<LevitatingTag>(entity);
         }
-
-        //TODO: SHOOTING SYSTEM (better name for it?)
-        //TODO: queries for its own components and ones that don't yet have the shooting tag but have the levitate tag
-        //TODO: then it puts the shooting tag on them and begins applying velocity (or force?) to them in the player's (levitateTarget's?) forward direction
-        //TODO: after a certain amount of time, the shooting system lets go of the objects and removes the shooting tag (this should also happen if they hit smth)
     }
 
     private void LevitateBehaviour(ref SystemState state)
